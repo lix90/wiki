@@ -1,0 +1,21 @@
+# Document:
+# http://simiki.org/docs/configuration.html
+
+url: https://lix90.github.io
+title: Wiki by Lixiang
+keywords: wiki, r, python, data science, matlab, emacs, learning
+description: "Lixiang's personal Wiki, powered by emacs and markdown."
+author: Lixiang
+theme: yasimple_x2
+root: /wiki
+
+markdown:
+  - fenced_code
+  - extra
+  - codehilite(css_class=hlcode, linenums=False)
+  - toc(title=Table of Contents)
+
+deploy:
+  - type: git
+    remote: origin
+    branch: gh-pages
