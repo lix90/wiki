@@ -1,43 +1,69 @@
 <!DOCTYPE HTML>
 <html>
   <head>
-    <link rel="Stylesheet" type="text/css" href="/static/css/style.css">
-    <link rel="Stylesheet" type="text/css" href="/static/css/tango.css">
-    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
-    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="Stylesheet" type="text/css" href="/wiki/static/css/colorful.css">
+    <link rel="Stylesheet" type="text/css" href="/wiki/static/css/style.css">
+    <link rel="shortcut icon" href="/wiki/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/wiki/favicon.ico" type="image/x-icon">
     <link rel="alternate" type="application/atom+xml" href="atom.xml" title="Atom feed">
-    <title></title>
-    <meta name="keywords" content=""/>
-    <meta name="description" content=""/>
+    <title>Wiki by Lixiang</title>
+    <meta name="keywords" content="wiki, r, python, data science, matlab, emacs, learning"/>
+    <meta name="description" content="Lixiang's personal Wiki, powered by emacs and markdown."/>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
   </head>
 
   <body>
-    <div id="container">
+    <div id="container" class="typo">
       
-<div class="title"></div>
+  <div id="header">
+    <a href="/wiki/">Wiki by Lixiang</a>
+  </div>
 
-<div class="index">    
+  
+  <div class="category_item">
+      
     <div class="category">
-      <h2 id="intro">Intro
-      </h2>
-      <div class="category_pages">
+      <div class="category_name">
+        <h2 id="intro">Intro
+        </h2>
+      </div>
+      <div class="category_list">
         <ul>
-          <li class="pagelist">  
+          <li class="pagelist item_arrow">
               <a href="./intro/gettingstarted.html">Getting Started</a>
           </li>
         </ul>
-      </div> <!-- end category_pages -->
+      </div> <!-- end category_list -->
     </div> <!-- end category -->
     <div class="clearfix"></div>
-</div>
+  </div> <!-- end category_item -->
     </div>
     <div id="footer">
-      <span>
-        <p>Copyright © 2017 .
-        Powered by <a href="http://simiki.org/" target="_blank">Simiki</a>.</p>
-        <p>Site Generated 2017-03-18 12:37:59</p>
-      </span>
+      <div class="footer-left">
+        <p>
+        Copyright © 2017 Lixiang.
+        Powered by <a href="http://simiki.org/" target="_blank">Simiki</a>.
+        Theme by <a href="https://git.coding.net/tankywoo/yasimple_x2.git" target="_blank">YASimple_X2</a>.
+        </p>
+      </div> <!-- end footer-left -->
+      <div class="footer-right">
+        <p>Site Generated 2017-03-18 16:09:56</p>
+      </div> <!-- end footer-right -->
     </div>
+
+    
+<script>
+  var list_wrappers = document.getElementsByClassName('list_wrapper')
+  for (var i = 0, len = list_wrappers.length; i < len; i++) {
+    var list_wrapper = list_wrappers[i];
+    var coll_name = list_wrapper.getElementsByClassName('coll_name')[0];
+    var coll_list = list_wrapper.getElementsByClassName('coll_list')[0];
+    var width = coll_name.clientWidth + 3;
+    // http://stackoverflow.com/a/10118190/1276501
+    coll_list.setAttribute("style","margin-left: " + width + "px");
+    coll_list.style.marginLeft = width + "px";
+  }
+</script>
   </body>
 </html>
