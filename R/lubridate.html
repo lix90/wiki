@@ -6,7 +6,7 @@
     <link rel="shortcut icon" href="/wiki/favicon.ico" type="image/x-icon">
     <link rel="icon" href="/wiki/favicon.ico" type="image/x-icon">
     <link rel="alternate" type="application/atom+xml" href="atom.xml" title="Atom feed">
-    <title>Packages - Wiki by Lixiang</title>
+    <title>lubridate - Wiki by Lixiang</title>
     <meta name="keywords" content="wiki, r, python, data science, matlab, emacs, learning"/>
     <meta name="description" content="Lixiang's personal Wiki, powered by emacs and markdown."/>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -21,7 +21,7 @@
     <a href="/wiki/">Wiki by Lixiang</a>
     &nbsp;&#187;&nbsp;
     <a href="/wiki/#R">R</a>
-    &nbsp;&#187;&nbsp;Packages
+    &nbsp;&#187;&nbsp;lubridate
     <span class="updated">Updated&nbsp;
     2017-03-18
     </span>
@@ -29,36 +29,7 @@
 </div>
 <div class="clearfix"></div>
 <div id="content">
-  <div class="toc"><span class="toctitle">Table of Contents</span><ul>
-<li><a href="#corrr">corrr</a></li>
-<li><a href="#forcats">forcats</a></li>
-<li><a href="#lubridate">lubridate</a></li>
-</ul>
-</div>
-<h1 id="corrr">corrr</h1>
-<p><a href="https://github.com/drsimonj/corrr">corrr</a> 一个用于探索相关关系的R包，提供了可视化的API。</p>
-<div class="hlcode"><pre>install.packages<span class="p">(</span><span class="s">&quot;corrr&quot;</span><span class="p">)</span>  <span class="c1"># from CRAN</span>
-devtools<span class="o">::</span>install_github<span class="p">(</span><span class="s">&quot;drsimonj/corrr&quot;</span><span class="p">)</span>  <span class="c1"># from github</span>
-</pre></div>
-
-
-<p><img alt="corrr_fig" src="https://raw.githubusercontent.com/drsimonj/corrr/master/to-cor-df.png" /></p>
-<h1 id="forcats">forcats</h1>
-<p><a href="https://github.com/tidyverse/forcats">forcats</a> 一个用于操作分类变量／因子的R包。</p>
-<div class="hlcode"><pre>install.packages<span class="p">(</span><span class="s">&quot;forcats&quot;</span><span class="p">)</span>
-devtools<span class="o">::</span>install_github<span class="p">(</span><span class="s">&quot;tidyverse/forcats&quot;</span><span class="p">)</span>
-</pre></div>
-
-
-<p><code>forcats::fct_recode()</code> 对指定的因子的水平重新编码。</p>
-<div class="hlcode"><pre>. <span class="o">%&gt;%</span>
-  mutate<span class="p">(</span>
-    fct <span class="o">=</span> fct_recode<span class="p">(</span>fct<span class="p">,</span> <span class="s">&quot;level_label2&quot;</span> <span class="o">=</span> <span class="s">&quot;level1&quot;</span><span class="p">,</span> <span class="s">&quot;level_label2&quot;</span> <span class="o">=</span> <span class="s">&quot;level2&quot;</span><span class="p">)</span>
-  <span class="p">)</span>
-</pre></div>
-
-
-<h1 id="lubridate">lubridate</h1>
+  <h1 id="lubridate">lubridate</h1>
 <p><a href="https://github.com/hadley/lubridate">lubridate</a> 一个用于处理日期对象的R包</p>
 <div class="hlcode"><pre>devtools<span class="o">::</span>install_github<span class="p">(</span><span class="s">&quot;hadley/lubridate&quot;</span><span class="p">)</span>
 </pre></div>
@@ -81,11 +52,21 @@ e<span class="o">*</span>s  <span class="c1"># for exact</span>
 leap_year<span class="p">()</span>  <span class="c1"># regular year</span>
 as.period<span class="p">()</span>
 </pre></div>
-
-
-<p>TODO:
-- purrr
-- showtext &amp; sysfonts</p>
+  
+  <div class="relation">
+    Related:
+    <ul>
+  
+    <li><a href="/wiki/R/corrr.html">corrr</a></li>
+  
+    <li><a href="/wiki/R/forcats.html">forcats</a></li>
+  
+    <li><a href="/wiki/R/pipr.html">pipeR</a></li>
+  
+    <li><a href="/wiki/R/rmarkdown.html">Rmarkdown</a></li>
+  
+    </ul>
+  </div>
   
 </div>
     </div>
@@ -98,7 +79,7 @@ as.period<span class="p">()</span>
         </p>
       </div> <!-- end footer-left -->
       <div class="footer-right">
-        <p>Site Generated 2017-03-18 18:03:18</p>
+        <p>Site Generated 2017-03-18 18:17:42</p>
       </div> <!-- end footer-right -->
     </div>
 
