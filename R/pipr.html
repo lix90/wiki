@@ -1,0 +1,76 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <link rel="Stylesheet" type="text/css" href="/wiki/static/css/colorful.css">
+    <link rel="Stylesheet" type="text/css" href="/wiki/static/css/style.css">
+    <link rel="shortcut icon" href="/wiki/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/wiki/favicon.ico" type="image/x-icon">
+    <link rel="alternate" type="application/atom+xml" href="atom.xml" title="Atom feed">
+    <title>pipeR - Wiki by Lixiang</title>
+    <meta name="keywords" content="wiki, r, python, data science, matlab, emacs, learning"/>
+    <meta name="description" content="Lixiang's personal Wiki, powered by emacs and markdown."/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+  </head>
+
+  <body>
+    <div id="container" class="typo">
+      
+<div id="header">
+  <div id="post-nav">
+    <a href="/wiki/">Wiki by Lixiang</a>
+    &nbsp;&#187;&nbsp;
+    <a href="/wiki/#R">R</a>
+    &nbsp;&#187;&nbsp;pipeR
+    <span class="updated">Updated&nbsp;
+    2017-03-18 17:29:29
+    </span>
+  </div>
+</div>
+<div class="clearfix"></div>
+<div id="content">
+  <h1 id="overview">Overview</h1>
+<p><a href="https://github.com/renkun-ken/pipeR">pipeR</a> 是由国内开发者 <a href="https://github.com/renkun-ken">renkun-ken</a> 开发的一个强大的流程化代码的包，比编写了详细的教程 <a href="http://renkun.me/pipeR-tutorial">pipeR-tutorial</a>。该包提供四种流程化代码的风格：</p>
+<ul>
+<li>运算符形式：<code>%&gt;&gt;%</code></li>
+<li>对象形式: <code>Pipe()</code></li>
+<li>参数形式：<code>pipeline()</code></li>
+<li>表达式形式：<code>pipeline({})</code></li>
+</ul>
+<div class="hlcode"><pre>devtools<span class="o">::</span>install_github<span class="p">(</span><span class="s">&quot;renkun-ken/pipeR&quot;</span><span class="p">)</span>
+</pre></div>
+
+
+<h1 id="_1">使用记录</h1>
+<p>目前全部将<code>[magrittr](https://github.com/tidyverse/magrittr)</code>包中的<code>%&gt;%</code>全部用<code>%&gt;&gt;%</code>替代，还未尝试使用其他三种风格。</p>
+<p>什么时候省略函数的 <code>()</code>？当函数只需传入一个参数时，并且不使用 <code>::</code> 指定包。
+利用副作用在同一个流程的代码中将结果赋值到新的变量：例如<code>(~ filter(., x == 1) -&gt; var)</code></p>
+  
+  <div class="relation">
+    Related:
+    <ul>
+  
+    <li><a href="/wiki/R/rmarkdown.html">Rmarkdown</a></li>
+  
+    </ul>
+  </div>
+  
+</div>
+    </div>
+    <div id="footer">
+      <div class="footer-left">
+        <p>
+        Copyright © 2017 Lixiang.
+        Powered by <a href="http://simiki.org/" target="_blank">Simiki</a>.
+        Theme by <a href="https://git.coding.net/tankywoo/yasimple_x2.git" target="_blank">YASimple_X2</a>.
+        </p>
+      </div> <!-- end footer-left -->
+      <div class="footer-right">
+        <p>Site Generated 2017-03-18 17:46:08</p>
+      </div> <!-- end footer-right -->
+    </div>
+
+    
+    
+  </body>
+</html>
