@@ -1,0 +1,168 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <link rel="Stylesheet" type="text/css" href="/wiki/static/css/colorful.css">
+    <link rel="Stylesheet" type="text/css" href="/wiki/static/css/style.css">
+    <link rel="shortcut icon" href="/wiki/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/wiki/favicon.ico" type="image/x-icon">
+    <link rel="alternate" type="application/atom+xml" href="atom.xml" title="Atom feed">
+    <title>git-commit message guides - Wiki by Lixiang</title>
+    <meta name="keywords" content="wiki, r, python, data science, matlab, emacs, learning"/>
+    <meta name="description" content="Lixiang's personal Wiki, powered by emacs and markdown."/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+  </head>
+
+  <body>
+    <div id="container" class="typo">
+      
+<div id="header">
+  <div id="post-nav">
+    <a href="/wiki/">Wiki by Lixiang</a>
+    &nbsp;&#187;&nbsp;
+    <a href="/wiki/#Tools">Tools</a>
+    &nbsp;&#187;&nbsp;git-commit message guides
+    <span class="updated">Updated&nbsp;
+    2017-03-19
+    </span>
+  </div>
+</div>
+<div class="clearfix"></div>
+<div id="content">
+  <div class="toc"><span class="toctitle">Table of Contents</span><ul>
+<li><a href="#_1">动机</a></li>
+<li><a href="#git-commit-message">规范化 git-commit message 作用</a></li>
+<li><a href="#git-commit-message_1">git-commit message 的规范</a><ul>
+<li><a href="#header">Header</a><ul>
+<li><a href="#type">type</a></li>
+<li><a href="#scope">scope</a></li>
+<li><a href="#subject">subject</a></li>
+</ul>
+</li>
+<li><a href="#body">Body</a></li>
+<li><a href="#footer">Footer</a></li>
+<li><a href="#revert">Revert</a></li>
+</ul>
+</li>
+<li><a href="#todo-emacsmagit">TODO: Emacs/Magit 配置</a></li>
+<li><a href="#_2">主要参考资料</a></li>
+</ul>
+</div>
+<h1 id="_1">动机</h1>
+<p>接触和使用 git 都是比较偶然而随意的事情。未曾考虑过提交信息中的书写规范问题。然而，总是会在提交更新时挠头忘记有哪些更新。每回更新时也没有相应的进行提交。每回提交时总是伴随着多种类型的修改。代码写得再漂亮，git-commit message 毫无规范，也只能算作是粗制滥造品吧。因为项目的发展是长期的维护，并且大项目和开源项目是需要多人合作的。因此，是时候了解和熟悉 git-commit message 规范了。</p>
+<h1 id="git-commit-message">规范化 git-commit message 作用</h1>
+<ul>
+<li>提供更多的历史信息，方便快速浏览。</li>
+<li>过滤 commit，便于快速查找。</li>
+<li>便于生成 Change log。</li>
+</ul>
+<h1 id="git-commit-message_1">git-commit message 的规范</h1>
+<p>参考阮一峰介绍的 Angular 规范，其 message 格式为：</p>
+<div class="hlcode"><pre><span class="nt">&lt;type&gt;</span>(<span class="nt">&lt;scope&gt;</span>): <span class="nt">&lt;subject&gt;</span>
+// 空一行
+<span class="nt">&lt;body&gt;</span>
+// 空一行
+<span class="nt">&lt;footer&gt;</span>
+</pre></div>
+
+
+<p>其中，Header 是必需的，Body 和 Footer 可以省略。</p>
+<h2 id="header">Header</h2>
+<p>Header部分只有一行，包括三个字段：type（必需）、scope（可选）和subject（必需）</p>
+<h3 id="type">type</h3>
+<p>type 用于说明 commit 的类别，只允许使用下面7个标识。</p>
+<ul>
+<li>feat：新功能（feature）</li>
+<li>fix：修补 bug</li>
+<li>docs：文档（documentation）</li>
+<li>style： 格式（不影响代码运行的变动）</li>
+<li>refactor：重构（即不是新增功能，也不是修改 bug 的代码变动）</li>
+<li>test：增加测试</li>
+<li>chore：构建过程或辅助工具的变动</li>
+</ul>
+<p>如果 type 为 feat 和 fix，则该 commit 将肯定出现在 Change log 之中。其他情况（docs、chore、style、refactor、test）由你决定，要不要放入 Change log，建议是不要。</p>
+<h3 id="scope">scope</h3>
+<p>scope 用于说明 commit 影响的范围，比如数据层、控制层、视图层等等，视项目不同而不同。</p>
+<h3 id="subject">subject</h3>
+<p>subject 是 commit 目的的简短描述，<strong>不超过50个字符</strong>。</p>
+<ul>
+<li><strong>以动词开头，使用第一人称现在时</strong>，比如change，而不是 changed 或 changes</li>
+<li><strong>第一个字母小写</strong></li>
+<li><strong>结尾不加句号（.）</strong></li>
+</ul>
+<h2 id="body">Body</h2>
+<p>Body 部分是对本次 commit 的详细描述，可以分成多行，每行限制在72个字符。空行来分隔段落。</p>
+<p>有两个注意点:</p>
+<ul>
+<li>使用第一人称现在时，比如使用change而不是changed或changes。</li>
+<li>应该说明代码变动的动机，以及与以前行为的对比。</li>
+</ul>
+<h2 id="footer">Footer</h2>
+<p>Footer 部分只用于两种情况。</p>
+<p>（1）不兼容变动</p>
+<p>如果当前代码与上一个版本不兼容，则 Footer 部分以 BREAKING CHANGE 开头，后面是对变动的描述、以及变动理由和迁移方法。</p>
+<p>BREAKING CHANGE: isolate scope bindings definition has changed.</p>
+<div class="hlcode"><pre><span class="n">To</span> <span class="n">migrate</span> <span class="n">the</span> <span class="n">code</span> <span class="n">follow</span> <span class="n">the</span> <span class="n">example</span> <span class="n">below</span><span class="o">:</span>
+
+<span class="nl">Before:</span>
+
+<span class="nl">scope:</span> <span class="p">{</span>
+  <span class="nl">myAttr:</span> <span class="err">&#39;</span><span class="n">attribute</span><span class="err">&#39;</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="nl">After:</span>
+
+<span class="nl">scope:</span> <span class="p">{</span>
+  <span class="nl">myAttr:</span> <span class="sc">&#39;@&#39;</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">The</span> <span class="n">removed</span> <span class="err">`</span><span class="n">inject</span><span class="err">`</span> <span class="n">wasn</span><span class="err">&#39;</span><span class="n">t</span> <span class="n">generaly</span> <span class="n">useful</span> <span class="k">for</span> <span class="n">directives</span> <span class="n">so</span> <span class="n">there</span> <span class="n">should</span> <span class="n">be</span> <span class="n">no</span> <span class="n">code</span> <span class="n">using</span> <span class="n">it</span><span class="p">.</span>
+</pre></div>
+
+
+<p>（2）关闭 Issue</p>
+<p>如果当前 commit 针对某个issue，那么可以在 Footer 部分关闭这个 issue 。</p>
+<p>Closes #234</p>
+<p>也可以一次关闭多个 issue 。</p>
+<p>Closes #123, #245, #992</p>
+<h2 id="revert">Revert</h2>
+<p>还有一种特殊情况，如果当前 commit 用于撤销以前的 commit，则必须以 revert: 开头，后面跟着被撤销 Commit 的 Header。</p>
+<p>revert: feat(pencil): add 'graphiteWidth' option</p>
+<p>This reverts commit 667ecc1654a317a13331b17617d973392f415f02.</p>
+<p>Body 部分的格式是固定的，必须写成 This reverts commit <hash>.，其中的 hash 是被撤销 commit 的 SHA 标识符。</p>
+<p>如果当前 commit 与被撤销的 commit，在同一个发布（release）里面，那么它们都不会出现在 Change log 里面。如果两者在不同的发布，那么当前 commit，会出现在 Change log 的 Reverts 小标题下面。</p>
+<h1 id="todo-emacsmagit">TODO: Emacs/Magit 配置</h1>
+<h1 id="_2">主要参考资料</h1>
+<ul>
+<li><a href="http://www.ruanyifeng.com/blog/2016/01/commit_message_change_log.html">阮一峰：Commit message 和 Change log 编写指南</a></li>
+<li><a href="https://chris.beams.io/posts/git-commit/?utm_source=wanqu.co&amp;utm_campaign=Wanqu+Daily&amp;utm_medium=rss">How to Write a Git Commit Message</a></li>
+</ul>
+  
+  <div class="relation">
+    Related:
+    <ul>
+  
+    <li><a href="/wiki/Tools/git-problem-solving.html">Git 问题解决</a></li>
+  
+    </ul>
+  </div>
+  
+</div>
+    </div>
+    <div id="footer">
+      <div class="footer-left">
+        <p>
+        Copyright © 2017 Lixiang.
+        Powered by <a href="http://simiki.org/" target="_blank">Simiki</a>.
+        Theme by <a href="https://git.coding.net/tankywoo/yasimple_x2.git" target="_blank">YASimple_X2</a>.
+        </p>
+      </div> <!-- end footer-left -->
+      <div class="footer-right">
+        <p>Site Generated 2017-03-19 11:49:30</p>
+      </div> <!-- end footer-right -->
+    </div>
+
+    
+    
+  </body>
+</html>
