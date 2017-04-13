@@ -1,0 +1,162 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <link rel="Stylesheet" type="text/css" href="/wiki/static/css/colorful.css">
+    <link rel="Stylesheet" type="text/css" href="/wiki/static/css/style.css">
+    <link rel="shortcut icon" href="/wiki/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/wiki/favicon.ico" type="image/x-icon">
+    <link rel="alternate" type="application/atom+xml" href="atom.xml" title="Atom feed">
+    <title>Emacs Lisp - Wiki by Lixiang</title>
+    <meta name="keywords" content="wiki, r, python, data science, matlab, emacs, learning"/>
+    <meta name="description" content="Lixiang's personal Wiki, powered by emacs and markdown."/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+  </head>
+
+  <body>
+    <div id="container" class="typo">
+      
+<div id="header">
+  <div id="post-nav">
+    <a href="/wiki/">Wiki by Lixiang</a>
+    &nbsp;&#187;&nbsp;
+    <a href="/wiki/#Emacs">Emacs</a>
+    &nbsp;&#187;&nbsp;Emacs Lisp
+    <span class="updated">Updated&nbsp;
+    2017-03-23 23:02
+    </span>
+  </div>
+</div>
+<div class="clearfix"></div>
+<div id="content">
+  <h1 id="hello-world">Hello world</h1>
+<div class="hlcode"><pre><span class="p">(</span><span class="n">message</span> <span class="s">&quot;Hello world!&quot;</span><span class="p">)</span>
+</pre></div>
+
+
+<h1 id="basics">Basics</h1>
+<h2 id="_1">函数与变量</h2>
+<p><code>defun</code> <code>setq</code> <code>defvar</code> <code>defconst</code> <code>defcustom</code> <code>let</code> <code>let*</code></p>
+<h3 id="_2">定义变量</h3>
+<div class="hlcode"><pre><span class="p">(</span><span class="n">setq</span> <span class="n">foo</span> <span class="s">&quot;I&#39;m foo&quot;</span><span class="p">)</span>
+<span class="p">(</span><span class="n">defvar</span> <span class="n">var</span><span class="o">-</span><span class="n">name</span> <span class="n">value</span>
+  <span class="s">&quot;document string&quot;</span><span class="p">)</span>
+</pre></div>
+
+
+<p>setq vs defvar</p>
+<h3 id="_3">局部作用域的变量</h3>
+<div class="hlcode"><pre><span class="p">(</span><span class="n">let</span> <span class="p">(</span><span class="n">bindings</span><span class="p">)</span>
+  <span class="n">body</span><span class="p">)</span>
+</pre></div>
+
+
+<p>let vs let*</p>
+<h3 id="_4">定义函数</h3>
+<div class="hlcode"><pre><span class="p">(</span><span class="nx">defun</span> <span class="kd">function</span><span class="o">-</span><span class="nx">name</span> <span class="p">()</span>
+  <span class="s2">&quot;document string.&quot;</span>
+  <span class="nx">body</span><span class="p">)</span>
+</pre></div>
+
+
+<h3 id="lambda">lambda 表达式</h3>
+<div class="hlcode"><pre><span class="p">(</span><span class="n">lambda</span> <span class="p">(</span><span class="n">arguments</span><span class="o">-</span><span class="n">list</span><span class="p">)</span>
+  <span class="s">&quot;documentation string.&quot;</span>
+  <span class="n">body</span><span class="p">)</span>
+</pre></div>
+
+
+<p>调用 lambda：</p>
+<div class="hlcode"><pre><span class="p">(</span><span class="n">funcall</span> <span class="p">(</span><span class="n">lambda</span> <span class="p">(</span><span class="n">name</span><span class="p">)</span>
+            <span class="p">(</span><span class="n">message</span> <span class="s">&quot;Hello, %s!&quot;</span> <span class="n">name</span><span class="p">))</span> <span class="s">&quot;Lix&quot;</span><span class="p">)</span>
+</pre></div>
+
+
+<p>lambda 表达式最常用的是作为参数传递给其它函数</p>
+<h2 id="_5">控制结构</h2>
+<p>顺序执行：<code>(progn A B C ...)</code></p>
+<h3 id="_6">条件判断</h3>
+<p><code>if</code> <code>cond</code> <code>when</code> <code>unless</code></p>
+<div class="hlcode"><pre><span class="p">(</span><span class="k">if</span> <span class="n">condition</span>
+    <span class="n">then</span>
+  <span class="k">else</span><span class="p">)</span>
+</pre></div>
+
+
+<div class="hlcode"><pre><span class="p">(</span><span class="n">cond</span> <span class="p">(</span><span class="n">case1</span> <span class="k">do</span><span class="o">-</span><span class="n">when</span><span class="o">-</span><span class="n">case1</span><span class="p">)</span>
+      <span class="p">(</span><span class="n">case1</span> <span class="k">do</span><span class="o">-</span><span class="n">when</span><span class="o">-</span><span class="n">case2</span><span class="p">)</span>
+      <span class="p">...</span>
+      <span class="p">(</span><span class="n">t</span> <span class="k">do</span><span class="o">-</span><span class="n">when</span><span class="o">-</span><span class="n">none</span><span class="o">-</span><span class="n">meet</span><span class="p">))</span>
+</pre></div>
+
+
+<p>when 能省去 if 里的 progn 结构，unless 省去条件为真子句需要的 nil 表达式。</p>
+<h3 id="_7">循环</h3>
+<p><code>while</code></p>
+<div class="hlcode"><pre><span class="p">(</span><span class="k">while</span> <span class="n">condition</span>
+  <span class="n">body</span><span class="p">)</span>
+</pre></div>
+
+
+<h2 id="_8">逻辑运算</h2>
+<p><code>and</code> <code>or</code> <code>not</code></p>
+<p>and 可代替 when，用于设置函数的"省值；or 可代替 unless，用于参数检查。</p>
+<h1 id="_9">数据类型</h1>
+<p>内建的 emacs 数据类型称为 primitive types，包括整数、浮点数、cons、符号（symbol）、字符串、向量（vector）、散列表（hash-table）、subr（内建函数，比如 cons, if, and 之类）、byte-code function，和其他特殊类型，例如缓冲区（buffer）。</p>
+<h2 id="_10">数字</h2>
+<p>emacs 的数字分为整数和浮点数，无双精度数 double。</p>
+<h3 id="_11">测试函数</h3>
+<p>整数类型 integerp，浮点数类型 floatp，数字类型 numberp。</p>
+<p>elisp 测试函数一般都是用 p 结尾，p 是 predicate 的第一个字母。</p>
+<h3 id="_12">数的比较</h3>
+<p>&lt; &gt; &gt;= &lt;= = /=</p>
+<p><code>/=</code> 用来作为不等于的测试
+<code>eql</code> 不仅用于测试数字的值是否相等，还测试数字类型是否一致</p>
+<h3 id="_13">数的转换</h3>
+<p>整数向浮点数转换：float
+浮点数转换成整数：
+- truncate 转换成靠近 0 的整数；
+- floor 转换成最接近的不比本身的整数；
+- ceiling 转换成最接近的不比本身小的整数；
+- round 四舍五入后的整数</p>
+<h3 id="_14">数的运算</h3>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li>/</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>如果参数都是整数，作除法时数相等返回1，不相等返回0。如果参数中有浮点数，整数会自动转换成浮点数进行运算。</p>
+<p>emacs 中没有 ++ 和 --，可以用 1+ 和 1- 使用 setq 赋值来替代 ++ 和 --。Common lisp 中的两个宏 incf 和 decf 可以实现 ++ 和 --。但是在 elisp 中使用这两个宏，需要在文件头写上：<code>(eval-when-compile (require 'cl))</code>。</p>
+<p><code>abs</code> 取数的绝对值。
+两个取整的函数：<code>%</code> <code>mod</code>；前者第一个参数必须是整数；后者第一个参数既可以是整数也可以是浮点数。另外，即使对相同的参数，两个函数也不一定具有相同的返回值。</p>
+<p>三角运算函数：sin, cos, tan, asin, acos, atan
+开方函数：sqrt
+exp 为 e 以底的指数运算，expt 可以指定底数的指数运算。
+log 默认底数为 e，但也可以指定底数。<code>(log x 10)</code> -&gt; log10。logb 以 2 为底的对数运算。
+random 产生随机数。</p>
+  
+</div>
+    </div>
+    <div id="footer">
+      <div class="footer-left">
+        <p>
+        Copyright © 2017 Lixiang.
+        Powered by <a href="http://simiki.org/" target="_blank">Simiki</a>.
+        Theme by <a href="https://git.coding.net/tankywoo/yasimple_x2.git" target="_blank">YASimple_X2</a>.
+        </p>
+      </div> <!-- end footer-left -->
+      <div class="footer-right">
+        <p>Site Generated 2017-04-13 10:50:46</p>
+      </div> <!-- end footer-right -->
+    </div>
+
+    
+    
+  </body>
+</html>

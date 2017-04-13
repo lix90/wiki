@@ -1,0 +1,80 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <link rel="Stylesheet" type="text/css" href="/wiki/static/css/colorful.css">
+    <link rel="Stylesheet" type="text/css" href="/wiki/static/css/style.css">
+    <link rel="shortcut icon" href="/wiki/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/wiki/favicon.ico" type="image/x-icon">
+    <link rel="alternate" type="application/atom+xml" href="atom.xml" title="Atom feed">
+    <title>Some Basics - Wiki by Lixiang</title>
+    <meta name="keywords" content="wiki, r, python, data science, matlab, emacs, learning"/>
+    <meta name="description" content="Lixiang's personal Wiki, powered by emacs and markdown."/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+  </head>
+
+  <body>
+    <div id="container" class="typo">
+      
+<div id="header">
+  <div id="post-nav">
+    <a href="/wiki/">Wiki by Lixiang</a>
+    &nbsp;&#187;&nbsp;
+    <a href="/wiki/#Data science">Data science</a>
+    &nbsp;&#187;&nbsp;Some Basics
+    <span class="updated">Updated&nbsp;
+    2017-03-22
+    </span>
+  </div>
+</div>
+<div class="clearfix"></div>
+<div id="content">
+  <p>关于什么是机器学习？</p>
+<blockquote>
+<p>algorithms for inferring unknowns from knowns.</p>
+<p>using a set of observations (samples) to uncover an underlying process (distributions).</p>
+</blockquote>
+<p>Supervised learning:
+we get (input, correct output) 有训练集（包含数据及其分类）及测试集（有数据没分类）</p>
+<p>Unsupervised learning:
+instead of (input, correct output), we get (input, ?)</p>
+<p>Reinforcement learning:
+instead of (input, correct output), we get (input, <em>some</em> output, <strong>grade for this output</strong>)</p>
+<p>Reinforcement learning 增强学习
+- 结果会有相应的奖励与惩罚（Rewards or losses）
+- 目标：奖励最大化</p>
+<p>学习的成分：
+- 未知的目标函数 f: x —&gt; y；
+- X 的分布 P；
+- 训练集 D；
+- 学习算法 A；
+- 假设集 H。</p>
+<p>机器学习的本质
+- A pattern exists; 有规律存在（学习的对象）
+- We cannot pin it down mathematically; 无法在数学上进行确定（否则没有学习的必要）
+- We have data on it. 有足够的数据（学习的基础）</p>
+<p>什么为学习：当前数据集所告知我们数据集之外信息（推广度问题）。
+<strong>样本复杂度</strong>：随着问题规模的增长所带来的所需训练样本的增长。
+在实际问题中，限制学习器成功的最大因素是有限的可用的训练数据。
+<strong>学习的可行性</strong>：可以通过训练错误率估计真实错误率；存在数据集 D，使得可以在假设集 H 中自由的选择子假设 h。
+如果现有有限个假设且训练数据量够多的情况下，那么不管我们如何选择训练数据，训练错误率和真实错误率都会很接近；我们设计算法来找一个 Ein 最小的假设，PAC 理论就保证了 Eout 很小。这样机器学习算法是有可能学到有用的知识的。</p>
+  
+</div>
+    </div>
+    <div id="footer">
+      <div class="footer-left">
+        <p>
+        Copyright © 2017 Lixiang.
+        Powered by <a href="http://simiki.org/" target="_blank">Simiki</a>.
+        Theme by <a href="https://git.coding.net/tankywoo/yasimple_x2.git" target="_blank">YASimple_X2</a>.
+        </p>
+      </div> <!-- end footer-left -->
+      <div class="footer-right">
+        <p>Site Generated 2017-04-13 10:50:46</p>
+      </div> <!-- end footer-right -->
+    </div>
+
+    
+    
+  </body>
+</html>

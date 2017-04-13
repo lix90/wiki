@@ -6,7 +6,7 @@
     <link rel="shortcut icon" href="/wiki/favicon.ico" type="image/x-icon">
     <link rel="icon" href="/wiki/favicon.ico" type="image/x-icon">
     <link rel="alternate" type="application/atom+xml" href="atom.xml" title="Atom feed">
-    <title>关于该wiki - Wiki by Lixiang</title>
+    <title>Learn Git - Wiki by Lixiang</title>
     <meta name="keywords" content="wiki, r, python, data science, matlab, emacs, learning"/>
     <meta name="description" content="Lixiang's personal Wiki, powered by emacs and markdown."/>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -20,16 +20,40 @@
   <div id="post-nav">
     <a href="/wiki/">Wiki by Lixiang</a>
     &nbsp;&#187;&nbsp;
-    <a href="/wiki/#about">about</a>
-    &nbsp;&#187;&nbsp;关于该wiki
+    <a href="/wiki/#Tools">Tools</a>
+    &nbsp;&#187;&nbsp;Learn Git
     <span class="updated">Updated&nbsp;
-    2017-03-17
+    2017-03-22 19:23
     </span>
   </div>
 </div>
 <div class="clearfix"></div>
 <div id="content">
-  <p>本wiki用于记录各个领域学习和阅读过程中获得的知识和有价值的信息。使用<a href="https://pages.github.com/">github-pages</a>搭建，<a href="http://simiki.org">Simiki</a>部署，<a href="http://daringfireball.net/projects/markdown/">markdown</a>编写，<a href="https://www.gnu.org/software/emacs/">emacs</a>编辑。</p>
+  <h2 id="sha">SHA</h2>
+<p>表示项目历史信息的文件由40个字符的“对象名（SHA）”来索引。不同内容的两个对象不可能有相同的对象名。
+- 快速判断两个对象是否相同；
+- 不同仓库的同样内容存在相同的对象名下；
+- 通过检查对象内容的哈希值和对象名来判断对象内容是否正确。</p>
+<h2 id="_1">四种类型的对象</h2>
+<ul>
+<li>blob：存储文件数据</li>
+<li>tree：类似文件目录，管理 tree 或 blob</li>
+<li>commit：标记项目某一个特定时间点的状态，包括一些关于时间点的元数据</li>
+<li>tag：标记某一次提交的方法</li>
+</ul>
+<h2 id="git-svn">Git 与 SVN 的区别</h2>
+<p>SVN 使用增量文件系统（Delta storage systems），它们存储每次提交的差异。Git 把每次提交的文件的全部内容（snapshot）都会记录下来。</p>
+  
+  <div class="relation">
+    Related:
+    <ul>
+  
+    <li><a href="/wiki/Tools/git-commit-message-style.html">git-commit message guides</a></li>
+  
+    <li><a href="/wiki/Tools/git-problem-solving.html">Git 问题解决</a></li>
+  
+    </ul>
+  </div>
   
 </div>
     </div>

@@ -1,0 +1,269 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <link rel="Stylesheet" type="text/css" href="/wiki/static/css/colorful.css">
+    <link rel="Stylesheet" type="text/css" href="/wiki/static/css/style.css">
+    <link rel="shortcut icon" href="/wiki/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/wiki/favicon.ico" type="image/x-icon">
+    <link rel="alternate" type="application/atom+xml" href="atom.xml" title="Atom feed">
+    <title>graphics - Wiki by Lixiang</title>
+    <meta name="keywords" content="wiki, r, python, data science, matlab, emacs, learning"/>
+    <meta name="description" content="Lixiang's personal Wiki, powered by emacs and markdown."/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+  </head>
+
+  <body>
+    <div id="container" class="typo">
+      
+<div id="header">
+  <div id="post-nav">
+    <a href="/wiki/">Wiki by Lixiang</a>
+    &nbsp;&#187;&nbsp;
+    <a href="/wiki/#R">R</a>
+    &nbsp;&#187;&nbsp;graphics
+    <span class="updated">Updated&nbsp;
+    2017-03-22
+    </span>
+  </div>
+</div>
+<div class="clearfix"></div>
+<div id="content">
+  <div class="toc"><span class="toctitle">Table of Contents</span><ul>
+<li><a href="#_1">函数索引</a><ul>
+<li><a href="#_2">常用底层函数</a></li>
+</ul>
+</li>
+<li><a href="#par-graphical-parameters">par: graphical parameters</a></li>
+</ul>
+</div>
+<h1 id="_1">函数索引</h1>
+<h2 id="_2">常用底层函数</h2>
+<table>
+<thead>
+<tr>
+<th align="left">函数名</th>
+<th align="left">中文描述</th>
+<th align="left">用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Axis (axis)</td>
+<td align="left">添加坐标轴，调用函数 <code>axis</code></td>
+<td align="left">``</td>
+</tr>
+<tr>
+<td align="left">abline</td>
+<td align="left">添加直线（垂直、水平、斜线）</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">lines</td>
+<td align="left">添加连接线段</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">segments</td>
+<td align="left">一对点之间绘制线段</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"><strong>arrows</strong></td>
+<td align="left">一对点之间绘制箭头</td>
+<td align="left">添加注释，误差线</td>
+</tr>
+<tr>
+<td align="left">box</td>
+<td align="left">绘制线框</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">grid</td>
+<td align="left">添加网格线</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">title</td>
+<td align="left">绘制标题</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">legend</td>
+<td align="left">添加图例</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">mtext</td>
+<td align="left">在图形边距上添加文字</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">text</td>
+<td align="left">添加文本内容</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">points</td>
+<td align="left">添加点</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">rect</td>
+<td align="left">绘制矩形</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">polygon</td>
+<td align="left">绘制多边形</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">polypath</td>
+<td align="left">绘制路径</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">symbols</td>
+<td align="left">绘制符号 (Circles, Squares, Stars, Thermometers, Boxplots)</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">xspline</td>
+<td align="left">Draw an X-spline</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"><strong>rug</strong></td>
+<td align="left">添加轴须图</td>
+<td align="left">散点图添加轴须图呈现分布特征</td>
+</tr>
+</tbody>
+</table>
+<p><strong>par</strong> | 设置和查询图形参数
+axTicks                 Compute Axis Tickmark Locations
+clip                    Set Clipping Region
+filled.contour          Level (Contour) Plots
+frame                   Create / Start a New Plot Frame
+grconvertX              Convert between Graphics Coordinate Systems
+identify                Identify Points in a Scatter Plot
+<strong>layout</strong>                  Specifying Complex Plot Arrangements
+locator                 Graphical Input
+screen                  Creating and Controlling Multiple Screens on a Single Device
+xinch                   Graphical Units
+strwidth/strheight | 计算字符串和数学表达式的宽/高</p>
+<p>plot                    Generic X-Y Plotting
+plot.data.frame         Plot Method for Data Frames
+plot.default            The Default Scatterplot Function
+plot.design             Plot Univariate Effects of a Design or Model
+plot.factor             Plotting Factor Variables
+plot.formula            Formula Notation for Scatterplots
+plot.histogram          Plot Histograms
+plot.raster             Plotting Raster Images
+plot.table              Plot Methods for 'table' Objects
+plot.window             Set up World Coordinates for Graphics Window
+plot.xy                 Basic Internal Plot Function</p>
+<p>assocplot               Association Plots
+barplot                 Bar Plots
+boxplot                 Box Plots
+boxplot.matrix          Draw a Boxplot for each Column (Row) of a Matrix
+bxp                     Draw Box Plots from Summaries
+cdplot                  Conditional Density Plots
+coplot                  Conditioning Plots
+curve                   Draw Function Plots
+dotchart                Cleveland's Dot Plots
+fourfoldplot            Fourfold Plots
+hist                    Histograms
+hist.POSIXt             Histogram of a Date or Date-Time Object
+matplot                 Plot Columns of Matrices
+mosaicplot              Mosaic Plots
+pairs                   Scatterplot Matrices
+panel.smooth            Simple Panel Plot
+persp                   Perspective Plots
+pie                     Pie Charts
+smoothScatter           Scatterplots with Smoothed Densities Color Representation
+spineplot               Spine Plots and Spinograms
+stars                   Star (Spider/Radar) Plots and Segment Diagrams
+stem                    Stem-and-Leaf Plots
+stripchart              1-D Scatter Plots
+sunflowerplot           Produce a Sunflower Scatter Plot</p>
+<p>双变量</p>
+<p>contour | 绘制轮廓线/等高线图
+image | 绘制二维图像
+rasterImage | 绘制栅格图</p>
+<h1 id="par-graphical-parameters">par: graphical parameters</h1>
+<p><strong>margins</strong>: (bottom, left, top, right)
+mar (margins size in lines)
+mai (margin size in inches)
+mex (scale fator of line height of margins)
+oma (out margins area)</p>
+<p>[tutorials of margins and outer margins]
+[R graphics]</p>
+<p><strong>multiple figures</strong>
+mlcol (multiple figures column)
+mlrow (multiple figures row)</p>
+<p><strong>cex</strong>: scale factor of text and symbols
+cex.axis: axis tick labels
+cex.lab: x-y axis labels
+cex.main: main title
+cex.sub: subtitle</p>
+<p><strong>axis</strong></p>
+<p><strong>xaxs</strong>: x-axis style of interval calculation: R 语言仅支持 r 和 i 两种风格
+- r = regular 会在原始数据的基础上有一个拓展，即原始数据点与边框之间有一段距离
+- i = interval 按照原始数据的大小进行计算，原始数据点可能与边框重叠</p>
+<p><strong>xaxt</strong>: x-axis type
+- n = no axis, 不绘制坐标轴
+- s/l/t = plot, 绘制坐标轴</p>
+<p><strong>plot regions</strong>
+<strong>plt</strong>: the coordinates of the plot region, (x1/left, x2/right, y1/bottom, y2/top), 每个值为 0 \~ 1 之间，为相对于 device 的长宽的比率。x1 为 device 左边缘至 plot region 左边缘的距离，x2 为 device 的左边缘至 plot region 的右边缘的距离。y1 为 device 的下边缘至 plot region 的下边缘的距离，y2 为 device 的下边缘至 plot region 的上边缘的距离。
+<strong>pin</strong>: specify the size of the plot region in inches, (width, height)
+<strong>pty</strong>: default "m", 占据可用空间的所有空间；"s"，以正方形的形式占据可用空间的最大空间。</p>
+<p><strong>xpd</strong>
+<code>par(xpd = NA)</code> clipped to device
+<code>par(xpd = TRUE)</code> clipped to the current figure region
+<code>par(xpd = FALSE)</code> clipped to the current plot region</p>
+  
+  <div class="relation">
+    Related:
+    <ul>
+  
+    <li><a href="/wiki/R/corrr.html">corrr</a></li>
+  
+    <li><a href="/wiki/R/forcats.html">forcats</a></li>
+  
+    <li><a href="/wiki/R/lubridate.html">lubridate</a></li>
+  
+    <li><a href="/wiki/R/pipr.html">pipeR</a></li>
+  
+    <li><a href="/wiki/R/pkg_management.html">Package Management</a></li>
+  
+    <li><a href="/wiki/R/plyr.html">plyr</a></li>
+  
+    <li><a href="/wiki/R/rmarkdown.html">Rmarkdown</a></li>
+  
+    <li><a href="/wiki/R/base.html">base</a></li>
+  
+    <li><a href="/wiki/R/grDevices.html">grDevices</a></li>
+  
+    </ul>
+  </div>
+  
+</div>
+    </div>
+    <div id="footer">
+      <div class="footer-left">
+        <p>
+        Copyright © 2017 Lixiang.
+        Powered by <a href="http://simiki.org/" target="_blank">Simiki</a>.
+        Theme by <a href="https://git.coding.net/tankywoo/yasimple_x2.git" target="_blank">YASimple_X2</a>.
+        </p>
+      </div> <!-- end footer-left -->
+      <div class="footer-right">
+        <p>Site Generated 2017-04-13 10:50:46</p>
+      </div> <!-- end footer-right -->
+    </div>
+
+    
+    
+  </body>
+</html>

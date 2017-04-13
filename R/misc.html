@@ -1,0 +1,114 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <link rel="Stylesheet" type="text/css" href="/wiki/static/css/colorful.css">
+    <link rel="Stylesheet" type="text/css" href="/wiki/static/css/style.css">
+    <link rel="shortcut icon" href="/wiki/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/wiki/favicon.ico" type="image/x-icon">
+    <link rel="alternate" type="application/atom+xml" href="atom.xml" title="Atom feed">
+    <title>杂项 - Wiki by Lixiang</title>
+    <meta name="keywords" content="wiki, r, python, data science, matlab, emacs, learning"/>
+    <meta name="description" content="Lixiang's personal Wiki, powered by emacs and markdown."/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+  </head>
+
+  <body>
+    <div id="container" class="typo">
+      
+<div id="header">
+  <div id="post-nav">
+    <a href="/wiki/">Wiki by Lixiang</a>
+    &nbsp;&#187;&nbsp;
+    <a href="/wiki/#R">R</a>
+    &nbsp;&#187;&nbsp;杂项
+    <span class="updated">Updated&nbsp;
+    2017-03-22
+    </span>
+  </div>
+</div>
+<div class="clearfix"></div>
+<div id="content">
+  <div class="toc"><span class="toctitle">Table of Contents</span><ul>
+<li><a href="#ess-r-vignettes">如何在 ESS 中调出 R 包对应的 Vignettes？</a></li>
+<li><a href="#r-startup-message">如何阻止 R 打印启动信息（startup message）</a></li>
+<li><a href="#r-apa">如何将 R 中的统计结果导出为发表格式（APA）？</a></li>
+</ul>
+</div>
+<h1 id="ess-r-vignettes">如何在 ESS 中调出 R 包对应的 Vignettes？</h1>
+<ul>
+<li>首先得加载包 <code>library(pkg)</code></li>
+<li><code>C-c C-d C-v</code> 查找已载入包的 Vignettes，含有 Vignettes 的包则会列出来</li>
+<li>光标移动到链接下，<code>enter/RET</code> 打开对应 Vignettes</li>
+</ul>
+<p>或者</p>
+<ul>
+<li>先搜索包的 vignette：<code>vignette(package = "pkg_name")</code>，获得 vignette 主题名称</li>
+<li>然后再通过 <code>vignette(topic = "topic_name", package = "pkg_name")</code> 调出 vignette</li>
+</ul>
+<h1 id="r-startup-message">如何阻止 R 打印启动信息（startup message）</h1>
+<ul>
+<li>命令行中，传给 R 参数即可 <code>R -q/--quiet/--silent</code></li>
+<li>ESS 中，设定变量 <code>inferior-R-args</code> 的值 <code>(setq inferior-R-args "-q")</code></li>
+</ul>
+<h1 id="r-apa">如何将 R 中的统计结果导出为发表格式（APA）？</h1>
+<p>一般来说，用 R 统计之后导出的信息过于详细，直接复制并不能满足发表的格式要求。但是结果报告时只需要特定的指标，所以需要精简信息。两个包可以实现该需求，<code>schoRsch</code> 和 <code>apa</code>。</p>
+<blockquote>
+<p>apa generalizes this idea by providing formatters for different output formats (text, Markdown, RMarkdown, HTML, LaTeX, docx and R’s plotmath syntax).</p>
+<p>Currently supported tests are:
+- t-test (<code>t.test</code> and <code>apa::t_test</code>)
+- ANOVA (<code>ez::ezANOVA</code>, <code>afex::aov_car</code>, <code>afex::aov_ez</code>, and <code>afex::aov_4</code>)
+- chi-squared test (<code>chisq.test</code>)
+- test of a correlation (<code>cor.test</code>)</p>
+</blockquote>
+<p>apa 包可以支持多种常见的心理学使用的统计检验方法，对应函数为：<code>anova_apa</code> <code>chisq_apa</code> <code>cor_apa</code> <code>t_apa</code>。apa 比 schoRsch 强大的地方是可以导出为多种格式，例如 Rmarkdown，html，latex，docx，以及在 R 绘图时的数学表达式。这样就可以直接复制结果到论文中了。</p>
+<p>schoRsch 包中包含这几个导出结果的函数：<code>anova_out</code> <code>cor_out</code> <code>chi_out</code> <code>t_out</code>。</p>
+<p><code>apa::anova_apa</code>
+- x: 支持 <code>ez::ezANOVA</code> <code>afex::afex_ez</code> <code>afex::afex_car</code> <code>afex::afex_4</code> 的结果作为输入对象。
+- effect: 字符串，指定效应名称；如果值为 'NULL'，所有效应均报告。
+- sph_corr: 字符串，指定球形检验方法，包括 "greenhouse-geisser"(默认) "huynh-feldt" 或 "none"；或者使用简称 "gg" "hf"。
+- es: 字符串，指定效应量类型，包括 "petasq"(partial eta squared) 或 "getasq"(generalized eta squared)；或者使用简称 "pes" 和 "ges"。
+- format: 字符串，指定导出格式，包含 "text", "markdown", "rmarkdown", "html", "latex", "docx", "plotmath"。</p>
+<p><code>apa::t_apa</code>
+- x: 来自 <code>apa::t_test</code> 或 <code>t.test</code> 的结果。
+- es: 字符串，指定效应量类型，包括 "cohens_d"(默认), "hedges_g", 或 "glass_delta"（如何 x 为独立样本 t 检验的结果）。如果 x 为配对样本或者单样本 t 检验结果，报告 cohen's d 值。
+- format: 字符串，导出格式。</p>
+<hr />
+<p>矫正 p.value：<code>p.adjust(p, method = p.adjust.methods)</code></p>
+<p>根据 p.value 的大小范围调整小数点位数：<code>afex::round_ps</code>，0.99-0.01 为两位小数点；p &lt; 0.01 为三位小数点；p &lt; 0.001 为四位小数点。</p>
+<p><code>plotrix::raw.means.plot</code>：用来绘制最多两因素实验设计结果的图形。该函数将原始数据绘制在背景上，将因子或者区组的均值绘制在前景。</p>
+<p><code>aov</code> 只适用于平衡设计（没有缺失值）。当存在两个或更多的误差项时，该方法将在统计上失效。此时可以使用 <code>nlme::lme</code>。数据是否平衡可以通过 <code>replications()</code> 函数检测。</p>
+<p>默认的 'contrasts' 为非正交对比，<code>aov</code> 及其辅助函数在正交对比下更有效。可以通过 <code>options(contrasts = c("contr.helmert", "contr.poly"))</code> 修改 'contrasts'。</p>
+<p>检验类型，type-I, type-II, type-III?</p>
+<blockquote>
+<p>The designations "type-II" and "type-III" are borrowed from SAS, but the definitions used here do not correspond precisely to those employed by SAS. <strong>Type-II tests are calculated according to the principle of marginality, testing each term after all others</strong>, except ignoring the term’s higher-order relatives; <strong>so-called type-III tests violate marginality, testing each term in the model after all of the others.</strong> This definition of Type-II tests corresponds to the tests produced by SAS for analysis-of-variance models, where all of the predictors are factors, but not more generally (i.e., when there are quantitative predictors). <strong>Be very careful in formulating the model for type-III tests, or the hypotheses tested will not make sense.</strong></p>
+<p>As implemented here, type-II Wald tests are a generalization of the linear hypotheses used to gen- erate these tests in linear models.</p>
+<p>The standard R anova function calculates sequential ("type-I") tests. These rarely test interesting hypotheses in unbalanced designs.</p>
+</blockquote>
+<ul>
+<li><a href="http://myowelt.blogspot.de/2008/05/obtaining-same-anova-results-in-r-as-in.html">btaining the same ANOVA results in R as in SPSS - the difficulties with Type II and Type III sums of squares</a></li>
+<li><a href="http://stats.stackexchange.com/questions/20452/how-to-interpret-type-i-type-ii-and-type-iii-anova-and-manova">How to interpret type I, type II, and type III ANOVA and MANOVA?</a></li>
+<li><a href="http://stats.stackexchange.com/questions/60362/choice-between-type-i-type-ii-or-type-iii-anova">Choice between Type-I, Type-II, or Type-III ANOVA</a></li>
+<li><a href="http://stats.stackexchange.com/questions/4544/how-does-one-do-a-type-iii-ss-anova-in-r-with-contrast-codes">How does one do a Type-III SS ANOVA in R with contrast codes?</a></li>
+<li><a href="https://afni.nimh.nih.gov/sscc/gangc/SS.html">Types of Sums of Squares</a></li>
+</ul>
+  
+</div>
+    </div>
+    <div id="footer">
+      <div class="footer-left">
+        <p>
+        Copyright © 2017 Lixiang.
+        Powered by <a href="http://simiki.org/" target="_blank">Simiki</a>.
+        Theme by <a href="https://git.coding.net/tankywoo/yasimple_x2.git" target="_blank">YASimple_X2</a>.
+        </p>
+      </div> <!-- end footer-left -->
+      <div class="footer-right">
+        <p>Site Generated 2017-04-13 10:50:46</p>
+      </div> <!-- end footer-right -->
+    </div>
+
+    
+    
+  </body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <link rel="Stylesheet" type="text/css" href="/wiki/static/css/colorful.css">
+    <link rel="Stylesheet" type="text/css" href="/wiki/static/css/style.css">
+    <link rel="shortcut icon" href="/wiki/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/wiki/favicon.ico" type="image/x-icon">
+    <link rel="alternate" type="application/atom+xml" href="atom.xml" title="Atom feed">
+    <title>Learn Emacs - Wiki by Lixiang</title>
+    <meta name="keywords" content="wiki, r, python, data science, matlab, emacs, learning"/>
+    <meta name="description" content="Lixiang's personal Wiki, powered by emacs and markdown."/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+  </head>
+
+  <body>
+    <div id="container" class="typo">
+      
+<div id="header">
+  <div id="post-nav">
+    <a href="/wiki/">Wiki by Lixiang</a>
+    &nbsp;&#187;&nbsp;
+    <a href="/wiki/#Emacs">Emacs</a>
+    &nbsp;&#187;&nbsp;Learn Emacs
+    <span class="updated">Updated&nbsp;
+    2017-03-22 19:26
+    </span>
+  </div>
+</div>
+<div class="clearfix"></div>
+<div id="content">
+  <h2 id="_1">快捷键设置</h2>
+<p>四种类型的快捷键设置：
+- 全局快捷键：<code>(global-set-key (kbd "A") 'your-command')</code>
+- 全局映射键：<code>(define-key key-translation-map (kbd "A") (kbd "B"))</code>
+- 基于 Major-Mode 的局部快捷键：<code>(local-set-key (kbd "A") 'your-command)</code>
+- 基于 Minor-Mode 的局部快捷键：<code>(define-key your-minor-mode-map (kbd "A") 'your-command)</code></p>
+<p>删除或禁用键：<code>(global/local-unset-key (kbd "A"))</code> <code>(global/local-set-key (kbd "A") 'ignore/nil)</code></p>
+<p>解决键冲突</p>
+<ul>
+<li>暴力映射：<code>define-key key-translation-map</code></li>
+<li>映射到新的 prefix 键上，再全局或者局部设置键。</li>
+</ul>
+<p>宏与函数的区别：函数的参数是在传入时 eval，而宏则是传入并展开后再 eval。
+快捷键的优先级：<code>key-translation-map &gt; minor-mode-map &gt; local-set-key &gt; global-set-key</code>
+在设置局部键时，需写出相应的代理映射键（prefix）。</p>
+<p>说明：整理自Emacs（微信公众号）文章《那就从妖艳酷炫的快捷键开始吧！（一）》</p>
+<h2 id="_2">: &amp; 符号</h2>
+<ul>
+<li><code>:foo</code> 在 Emacs Lisp 中是 <code>keyword symbol</code></li>
+<li>在 <code>use-package</code> 中被用作 <code>keyword arguments</code></li>
+<li><code>&amp;optional</code> 指定的形参是可选的，如果没有指定，则当作 <code>nil</code></li>
+<li><code>&amp;rest</code> 指定的形参是可变</li>
+</ul>
+<blockquote>
+<p>宏的实参不会在宏被求值的时候立刻求值，而是会被当做数据直接传递给宏。因此宏可以自己决定那些代码在什么时候被求值。</p>
+</blockquote>
+<p>参考 emacs-china 社区<a href="https://emacs-china.org/t/emacslisp/1566">问答</a></p>
+  
+  <div class="relation">
+    Related:
+    <ul>
+  
+    <li><a href="/wiki/Emacs/practice.html">Practices</a></li>
+  
+    <li><a href="/wiki/Web/emacs_configuration.html">前端开发 Emacs 配置</a></li>
+  
+    </ul>
+  </div>
+  
+</div>
+    </div>
+    <div id="footer">
+      <div class="footer-left">
+        <p>
+        Copyright © 2017 Lixiang.
+        Powered by <a href="http://simiki.org/" target="_blank">Simiki</a>.
+        Theme by <a href="https://git.coding.net/tankywoo/yasimple_x2.git" target="_blank">YASimple_X2</a>.
+        </p>
+      </div> <!-- end footer-left -->
+      <div class="footer-right">
+        <p>Site Generated 2017-04-13 10:50:46</p>
+      </div> <!-- end footer-right -->
+    </div>
+
+    
+    
+  </body>
+</html>

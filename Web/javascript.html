@@ -1,0 +1,514 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <link rel="Stylesheet" type="text/css" href="/wiki/static/css/colorful.css">
+    <link rel="Stylesheet" type="text/css" href="/wiki/static/css/style.css">
+    <link rel="shortcut icon" href="/wiki/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/wiki/favicon.ico" type="image/x-icon">
+    <link rel="alternate" type="application/atom+xml" href="atom.xml" title="Atom feed">
+    <title>JavaScript Basics - Wiki by Lixiang</title>
+    <meta name="keywords" content="wiki, r, python, data science, matlab, emacs, learning"/>
+    <meta name="description" content="Lixiang's personal Wiki, powered by emacs and markdown."/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+  </head>
+
+  <body>
+    <div id="container" class="typo">
+      
+<div id="header">
+  <div id="post-nav">
+    <a href="/wiki/">Wiki by Lixiang</a>
+    &nbsp;&#187;&nbsp;
+    <a href="/wiki/#Web">Web</a>
+    &nbsp;&#187;&nbsp;JavaScript Basics
+    <span class="updated">Updated&nbsp;
+    2017-03-22
+    </span>
+  </div>
+</div>
+<div class="clearfix"></div>
+<div id="content">
+  <h1 id="javascript">JavaScript 对象</h1>
+<h2 id="_1">基本包装类型</h2>
+<p>ECMAScript 提供了3个特殊的引用类型：Boolean、Number 和 String。
+引用类型与基本包装类型的主要区别就是<strong>对象的生存期</strong>。</p>
+<blockquote>
+<p>使用 new 操作符创建的引用类型的实例，在执行流离开当前作用域之前都一直保存在内存中。而自动创建的基本包装类型的对象，则只存在于一行代码的执行瞬间，然后立即被销毁。这意味着不能在运行时为基本类型值添加属性和方法。</p>
+</blockquote>
+<p>使用 new 调用基本包装类型的构造函数，与直接调用同名的转型函数不一样。使用转型函数得到的对象仍然为基本类型。
+不建议显式地创建基本包装类型的对象。</p>
+<h3 id="boolean">Boolean 类型</h3>
+<p>基本类型与引用类型的布尔值的区别：
+- 布尔表达式中的所有对象都会被转换为 true，所以即便 Boolean 对象的值为 false，在布尔表达式中仍然为 true。
+- typeof 操作符对基本类型返回 "boolean"，而对引用类型返回 "object"。
+- 由于 Boolean 对象是 Boolean 类型的实例，所以使用 instanceof 操作符测试 Boolean 对象会返回 true，而测试基本类型的布尔值则返回 false。</p>
+<h3 id="number">Number 类型</h3>
+<p>Number 类型提供了操作数值的方法。
+- <code>toExponential</code> 返回指数（科学记数法）表示方法的数值的字符串。
+- <code>toFixed()</code> 返回固定小数点位数表示方法的数值的字符串。
+- <code>toPrecision()</code> 返回特定精度的数值的字符串。
+- <code>valueOf()</code> 返回基本类型值
+- <code>toLocaleString()</code> <code>toString()</code> 返回数值的字符串表示。</p>
+<h3 id="string">String 类型</h3>
+<p>String 类型实例同样继承了 <code>valueOf()</code> <code>toLocaleString()</code> <code>toString()</code> 方法，都返回对象所表示的基本字符串值。</p>
+<p><strong>字符方法</strong>
+两个用于访问字符串中特定字符的方法：<code>charAt()</code> 和 <code>charCodeAt()</code>，两个方法都接收一个参数，即基于0的字符位置。
+ECMAScript 5定义了另一个访问个别字符的方法，在支持此方法的浏览器中，可以使用方括号加数字索引来反问字符串中的特定字符。</p>
+<p><strong>字符串操作方法</strong>
+拼接字符串 <code>concat()</code>，该方法可以接受任意多个参数。
+三个基于子字符串创建新字符串的方法：<code>slice()</code> <code>substr()</code> <code>substring()</code>。
+字符串位置方法：<code>indexOf()</code> <code>lastIndexOf()</code>
+<code>trim()</code> 方法：删除前置及后缀的所有空格。
+大小写转换方法：<code>toLowerCase()</code> <code>toLocaleLowerCase()</code> <code>toUpperCase()</code> <code>toLocaleUpperCase()</code>
+模式匹配方法：<code>match()</code> <code>search()</code> <code>replace()</code> <code>split()</code>
+<code>localeCompare()</code>：比较两个字符串，并返回-1，0，或1。
+<code>fromCharCode()</code>：接收一或多个字符编码，然后将它们转换成一个字符串。</p>
+<h2 id="_2">单体内置对象</h2>
+<p><strong>内置对象</strong>：由 ECMAScript 实现提供的、不依赖于宿主环境的对象，这些对象在 ECMAScript 程序执行之前就已经存在了。开发者不必显式地实例化内置对象，因为它们已经被实例化了。</p>
+<h3 id="global">Global 对象</h3>
+<p>不属于任何其他对象的属性和方法，最终都是 Global 对象的属性和方法。事实上，没有全局变量或全局函数；所有在全局作用域中定义的属性和函数，都是 Global 对象的属性。</p>
+<p>URI 编码方法
+<code>encodeURI()</code> <code>encodeURIComponent()</code> 方法可以对 URI (Uniform Resource Identifiers, 通用资源标识符) 进行编码，以便发送给浏览器。有效的 URI 中不能包含某些字符，于是这两个方法就对 URI 进行编码，使用特殊的 UTF-8 编码替换掉所有无效的字符，从而让浏览器能够接受和理解。</p>
+<p><code>decodeURI()</code> <code>decodeURIComponent()</code> 解码方法和编码方法相对应。</p>
+<p><code>eval()</code> 方法像是一个完整的 ECMAScript 解析器，只接受一个参数，即要执行的 ECMAScript 字符串。</p>
+<h3 id="math">Math 对象</h3>
+<p>Math 对象的属性，大多是数学计算中可能会用到的一些特殊值。
+<code>min()</code> 和 <code>max()</code> 方法
+舍入方法：<code>Math.ceil()</code> <code>Math.floor()</code> <code>Math.round()</code>
+<code>random()</code> 方法返回大于等于0小于1的一个随机数。
+要得到特定范围的随机值 <code>值 = Math.floor(Math.random() * 可能值的总数 + 第一个可能的值)</code></p>
+<h2 id="date">Date</h2>
+<p>构建 Date 类型
+<code>var now = new Data()</code> 为传入参数将自动返回当前的日期和时间，为距 UTC 1970-1-1午夜零时的时间戳（毫秒）。若需创建特定日期和时间创建日期对象，需传入时间戳。</p>
+<p>两个方法：输出因浏览器而异。
+<code>Data.parse()</code> 接收日期的字符串参数然后返回时间戳。参数格式因本地语言设置有关。
+<code>Data.UTC()</code> 接收的参数分别为年、月（0开始）、日、时、分、秒、毫秒。返回时间戳。</p>
+<p>ECMAScript 5 新引入的方法
+<code>Data.now()</code> 调用该方式时的日期和时间的毫秒数。</p>
+<p>继承方法
+Date 类型继承了 <code>toLocaleString()</code> <code>toString()</code> <code>valueOf()</code> 的方法，但输出值与其他类型的方法不同。</p>
+<p>日期格式化方法
+<code>toDateString()</code>
+<code>toTimeString()</code>
+<code>toLocaleDateString()</code>
+<code>toLocaleTimeString()</code>
+<code>toUTCString()</code></p>
+<p>日期/时间组件方法：直接取得和设置日期值中特定部分的方法 <code>get/set*</code>。</p>
+<h2 id="regexp">RegExp 类型</h2>
+<p>字面量 <code>/pattern/flags</code>
+构造函数 <code>new RegExp(pattern[, flags])</code></p>
+<div class="hlcode"><pre><span class="sr">/ab+c/i</span><span class="p">;</span>
+<span class="k">new</span> <span class="nb">RegExp</span><span class="p">(</span><span class="s1">&#39;ab+c&#39;</span><span class="p">,</span> <span class="s1">&#39;i&#39;</span><span class="p">);</span>
+<span class="k">new</span> <span class="nb">RegExp</span><span class="p">(</span><span class="sr">/ab+c/</span><span class="p">,</span> <span class="s1">&#39;i&#39;</span><span class="p">);</span>
+</pre></div>
+
+
+<p><strong>pattern</strong> 任何简单或复杂的正则表达式，包含字符类、限定符、分组、先前查找、反向引用。构造函数下，pattern 也可以为字符串模式。
+<strong>flags</strong> 每个正则表达式都可以带一个或多个标志（flags），用来标明正则表达式的行为。
+- g：全局，遍历所有匹配项。
+- i：不区分大小写。
+- m：多行模式。</p>
+<p>元字符：模式中所有元字符都必须转义，包括 <code>( [ { \ ^ $ | ) ? * + . ] }</code>。</p>
+<h3 id="regexp_1">RegExp 实例属性</h3>
+<p>RegExp 实例属性可以取得有关模式的各种信息：
+- <strong>global</strong> 布尔值，是否设置了 g 标志。
+- <strong>ignore</strong>Case 布尔值，是否设置了 i 标志。
+- <strong>lastIndex</strong> 整数，表示开始搜索下一个匹配项的字符位置，从0算起。
+- <strong>multiline</strong> 布尔值，是否设置了 m 标志。
+- <strong>source</strong> 正则表达式的字符串表示，按照<strong>字面量形式</strong>返回。</p>
+<h3 id="regexp_2">RegExp 构造函数属性</h3>
+<p>RegExp 构造函数包含的一些属性适用于作用域中的所有正则表达式，并且基于所执行的最近一次正则表达式操作而变化。这些属性分别有一个长属性名和一个短属性名。短属性名大都不是有效的 ECMAScript 标识符，因此必须通过方括号语法来访问它们。除此之外还有用9个用于存储捕获组的构造函数属性。访问这些属性的语法是 <code>RegExp.$1/2/.../9</code>。</p>
+<table>
+<thead>
+<tr>
+<th align="left">长属性名</th>
+<th align="left">短属性名</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>input</code></td>
+<td align="left"><code>$_</code></td>
+<td align="left">最近一次要匹配的字符串</td>
+</tr>
+<tr>
+<td align="left"><code>lastMatch</code></td>
+<td align="left"><code>$&amp;</code></td>
+<td align="left">最近一次的匹配项</td>
+</tr>
+<tr>
+<td align="left"><code>lastParen</code></td>
+<td align="left"><code>$+</code></td>
+<td align="left">最近一次匹配的捕获组</td>
+</tr>
+<tr>
+<td align="left"><code>leftContext</code></td>
+<td align="left">`$``</td>
+<td align="left">input 字符串中 lastMatch 之前的文本</td>
+</tr>
+<tr>
+<td align="left"><code>multiline</code></td>
+<td align="left"><code>$*</code></td>
+<td align="left">布尔值，表示是否所有表达式都使用多行模式</td>
+</tr>
+<tr>
+<td align="left"><code>rightContext</code></td>
+<td align="left"><code>$'</code></td>
+<td align="left">input 字符串中 lastMatch 之后的文本</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_3">模式的局限性</h3>
+<p>不支持的正则表达式特性：
+- 匹配字符串开始和结尾的 <code>\A</code> 和 <code>\Z</code> 锚。（支持 <code>^</code> 和 <code>$</code> 匹配）
+- 向后查找（但完全支持向前查找）
+- 并集和交集类
+- 原子组
+- Unicode 支持（单个字符除外，如 \uFFFF）
+- 命名的捕获组
+- <code>s</code>（单行） 和 <code>x</code>（无间隔） 匹配模式
+- 条件匹配
+- 正则表达式注释</p>
+<h2 id="_4">总结</h2>
+<p>学习 JavaScript 编程基础已有一段时间，觉得 JavaScript 的难点在于几个难以理解的抽象概念和应对一些语言设计上的“坑”。理解了 JS 语言中的这几个概念，例如，对象，类，原型，原型链，作用域，闭包，继承等，也就算是入门了吧。实际上，这些概念也就是面向对象和函数式编程语言对于初学编程的人来说难以理解的点。只不过在 JS 上，有其特殊性。</p>
+<h1 id="javascript_1">JavaScript 作用域</h1>
+<p>来源：你不知道的 JS 上 --- 作用域</p>
+<p>传统编译语言的流程中，源码在执行前会经历三个步骤（编译）：
+- <strong>分词/词法分析（Tokenizing/Lexing）</strong>：将由字符组成的字符串分解成有意义的代码块（词法单元）。
+- <strong>解析/语法分析（Parsing）</strong>：将词法单元流（数组）转换成一个由元素逐级嵌套所组成的代表了程序语法结构的数（抽象语法树，Abstract Syntax Tree, AST）。
+- <strong>代码生成</strong>：将 AST 转换为可执行代码。</p>
+<p>对 JS 来说，大部分情况下编译发生在代码执行前的几微秒（甚至更短！）的时间内。任何 JS 代码片段在执行前都要进行编译。编译后通常马上执行它。</p>
+<p>代码编译到执行关键的三个部件：
+- <strong>引擎</strong>：从头到尾负责整个 JS 程序的编译及执行过程。
+- <strong>编译器</strong>：负责语法分析及代码生成等。
+- <strong>作用域</strong>：负责收集并维护有所有声明的标识符（变量）组成的一系列查询，并实施一套非常严格的规则，确定当前执行的代码对这些标识符的访问权限。</p>
+<p><strong>变量的赋值操作</strong>会执行两个动作，首先编译器会在当前作用域中声明一个变量（如果之前没有声明过），然后在运行时引擎会在作用域中查找该变量，如果能够找到就会对它赋值。</p>
+<p>理解两种查询方式：
+- <strong>LHS 查询</strong>，视图找到变量的容器本身，然后对其赋值。赋值操作的目标是谁？
+- <strong>RHS 查询</strong>，取到它的源值，意味着得到某某的值。谁是赋值操作的源头？</p>
+<p>当变量出现在赋值操作的左侧时，进行 LHS 查询，出现在右侧（非左侧）则进行 RHS 查询。RHS 查询与简单地查找某个变量的值别无二致，而 LHS 查询则是视图找到变量的容器本身，从而可以对其赋值。</p>
+<p>当一个块或函数嵌套在另一个块或函数中时，就发生了作用域的嵌套。
+<strong>遍历嵌套作用域链</strong>：引擎从当前的执行作用域开始查找变量，如果找不到，就向上一级继续查找。当抵达最外层的全局作用域时，无论找到与否，查找过程都会停止。</p>
+<p><strong>ReferenceError</strong>
+如果 RHS 查询在所有嵌套的作用域中遍寻不到所需的变量，引擎就会抛出 ReferenceError 异常。但是，当引擎执行 LHS 查询时，如果在顶层中也无法找到目标变量，全局作用域中就会创建一个具有该名称的变量，并将其返还给引擎，前提是程序运行在非“严格模式”下。在严格模式下，会禁止自动或隐式地创建全局变量。因此，在严格模式中 LHS 查询失败时，并不会创建并返回一个全局变量，引擎同样抛出 ReferenceError 异常。</p>
+<p><strong>TypeError</strong>
+如果 RHS 查询找到了一个变量，但是你尝试对这个变量的值进行不合理的操作，比如视图对一个非函数类型的值进行函数调用，或者引用 null 或 undefined 类型的值中的属性，那么引擎会抛出另外一种类型的异常，叫作 TypeError。</p>
+<p>总结：作用域是学习编程过程中需要着重理解的概念之一。</p>
+<h1 id="jquery">jQuery</h1>
+<p>jQuery 的优势：
+- 轻量级：采用 UglifyJS 压缩，保持在 30KB 左右。
+- 强大的选择器：允许开发者使用 CSS 几乎所有选择器，以及独创的高级而复杂的选择器。开发者还可以编写自己的选择器。
+- 出色的 DOM 操作的封装。
+- 可靠的事件处理机制。
+- 完善的 Ajax。所有 ajax 的操作都封装到一个函数 <code>$.ajax()</code> 里，使得开发者处理 ajax 的时候能够专心处理业务逻辑。
+- 不污染顶层变量。该特性使得 jQuery 可以与其他 JS 库共存。
+- 出色的浏览器兼容性。
+- 链式操作方法。jQuery 最有特色的莫过于它的链式操作方式，即对发生在同一个 jQuery 对象上的一组动作，可以直接连写而无需重复获取对象。
+- 隐式迭代。jQuery 里的方法都被设计成自动操作对象集合，而不是单独的对象。
+- 行为层与结构层的分离。开发者可以使用 jQuery 选择器选中元素，然后直接给元素添加事件。
+- 丰富的插件支持。jQuery 的易扩展性，吸引了来自全球的开发者来编写 jQuery 的扩展插件。
+- 完善的文档。包括长期更新的中文文档。
+- 开源。</p>
+<p>来源：《锋利的 jQeury 第二版》</p>
+<h1 id="javascript_2">JavaScript：解构赋值</h1>
+<p><strong>解构赋值句法</strong>是一个能够从数组或者对象中提取出数据并赋值到不同变量的表达式。</p>
+<h2 id="_5">数组解构赋值</h2>
+<p>基本赋值：数组中的元素依次赋值给左边的变量。如果变量个数超出了数组长度，那么超出部分的变量赋值为 <code>undefined</code>。如果变量个数不及数组长度，多余的数组元素不赋值给变量。</p>
+<div class="hlcode"><pre><span class="kd">var</span> <span class="nx">foo</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;one&quot;</span><span class="p">,</span> <span class="s2">&quot;two&quot;</span><span class="p">,</span> <span class="s2">&quot;three&quot;</span><span class="p">];</span>
+<span class="c1">// 变量个数等于 foo 长度</span>
+<span class="kd">var</span> <span class="p">[</span><span class="nx">One</span><span class="p">,</span> <span class="nx">Two</span><span class="p">,</span> <span class="nx">Three</span><span class="p">]</span> <span class="o">=</span> <span class="nx">foo</span><span class="p">;</span>
+<span class="c1">// 变量个数小于 foo 长度</span>
+<span class="kd">var</span> <span class="p">[</span><span class="nx">One</span><span class="p">,</span> <span class="nx">Two</span><span class="p">]</span> <span class="o">=</span> <span class="nx">foo</span><span class="p">;</span>
+<span class="c1">// 变量个数大于 foo 长度</span>
+<span class="kd">var</span> <span class="p">[</span><span class="nx">One</span><span class="p">,</span> <span class="nx">Two</span><span class="p">,</span> <span class="nx">Three</span><span class="p">,</span> <span class="nx">Four</span><span class="p">]</span> <span class="o">=</span> <span class="nx">foo</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">Four</span><span class="p">);</span> <span class="c1">// undefined</span>
+</pre></div>
+
+
+<p>可以对变量设定默认值，这样当数组长度不足时，仍然具有想要的值。</p>
+<div class="hlcode"><pre><span class="kd">var</span> <span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">;</span>
+<span class="p">[</span><span class="nx">a</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">b</span> <span class="o">=</span> <span class="mi">8</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="p">);</span> <span class="c1">// 2</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">b</span><span class="p">);</span> <span class="c1">// 8 not undefined</span>
+</pre></div>
+
+
+<p>可以用过逗号分隔而不写变量名忽略掉某些数组的值。解构句法也可以从函数输出值赋值给变量。</p>
+<div class="hlcode"><pre><span class="kd">function</span> <span class="nx">f</span><span class="p">()</span> <span class="p">{</span>
+<span class="k">return</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">];</span>
+<span class="p">}</span>
+<span class="c1">// 忽略掉特定的值</span>
+<span class="kd">var</span> <span class="p">[</span><span class="nx">a</span><span class="p">,</span> <span class="p">,</span> <span class="nx">b</span><span class="p">]</span> <span class="o">=</span> <span class="nx">f</span><span class="p">();</span>
+<span class="c1">// 忽略掉所有值</span>
+<span class="p">[,,]</span> <span class="o">=</span> <span class="nx">f</span><span class="p">();</span>
+</pre></div>
+
+
+<p>使用 <code>...</code> 将剩余内容赋值给一个变量。</p>
+<div class="hlcode"><pre><span class="kd">var</span> <span class="p">[</span><span class="nx">a</span><span class="p">,</span> <span class="p">...</span><span class="nx">b</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">];</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">b</span><span class="p">);</span> <span class="c1">// [2, 3]</span>
+</pre></div>
+
+
+<p>交换变量值。</p>
+<div class="hlcode"><pre><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">b</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+<span class="p">[</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="nx">b</span><span class="p">,</span> <span class="nx">a</span><span class="p">];</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="p">);</span> <span class="c1">// 2</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">b</span><span class="p">);</span> <span class="c1">// 1</span>
+</pre></div>
+
+
+<p>拉取正则表达式的匹配值</p>
+<div class="hlcode"><pre><span class="kd">var</span> <span class="nx">url</span> <span class="o">=</span> <span class="s2">&quot;https://developer.mozilla.org/en-US/Web/JavaScript&quot;</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">parsedURL</span> <span class="o">=</span> <span class="sr">/^(\w+)\:\/\/([^\/]+)\/(.*)$/</span><span class="p">.</span><span class="nx">exec</span><span class="p">(</span><span class="nx">url</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">parsedURL</span><span class="p">);</span>
+<span class="kd">var</span> <span class="p">[,</span> <span class="nx">protocol</span><span class="p">,</span> <span class="nx">fullhost</span><span class="p">,</span> <span class="nx">fullpath</span><span class="p">]</span> <span class="o">=</span> <span class="nx">parsedURL</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">protocol</span><span class="p">);</span> <span class="c1">// &quot;https&quot;</span>
+</pre></div>
+
+
+<p>补充：</p>
+<ul>
+<li><code>RegExp.prototype.exec()</code> 执行对特定字符串的匹配搜索，返回数组或 <code>null</code>。<code>regObj.exec(str)</code></li>
+<li><code>RegExp.prototype.test()</code> 将正则表达式与特定字符串进行匹配，并执行搜索，返回 <code>true</code> 或 <code>false</code>。<code>regObj.test(str)</code></li>
+<li><code>String.prototype.search()</code> 执行特定字符串与正则表达式的匹配搜索，返回 <code>true</code> 或 <code>false</code>。<code>str.search(regexp)</code></li>
+<li><code>String.prototype.match()</code> 执行特定字符串与正则表达式的匹配搜索，返回数组或 <code>null</code>。<code>str.match(regexp)</code></li>
+</ul>
+<h2 id="_6">对象解构</h2>
+<p>对象的解构与数组不同的地方，最显著在于括号，数组使用 <code>[]</code>，对象使用 <code>{}</code>。基本用法为：</p>
+<div class="hlcode"><pre><span class="kd">var</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{</span><span class="nx">p</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">q</span><span class="o">:</span> <span class="kc">true</span><span class="p">};</span>
+<span class="kd">var</span> <span class="p">{</span><span class="nx">p</span><span class="p">,</span> <span class="nx">q</span><span class="p">}</span> <span class="o">=</span> <span class="nx">obj</span><span class="p">;</span> <span class="c1">// 变量名必须为对象的 key，否则变量值为 undefined。</span>
+</pre></div>
+
+
+<p>但是也可以赋值到新变量：</p>
+<div class="hlcode"><pre><span class="kd">var</span> <span class="p">{</span><span class="nx">p</span><span class="o">:</span> <span class="nx">foo</span><span class="p">,</span> <span class="nx">q</span><span class="o">:</span> <span class="nx">bar</span><span class="p">}</span> <span class="o">=</span> <span class="nx">o</span><span class="p">;</span>
+</pre></div>
+
+
+<p>如果未先声明对象，语句应该用 <code>()</code> 包裹。</p>
+<div class="hlcode"><pre><span class="kd">var</span> <span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">;</span>
+<span class="p">({</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">}</span> <span class="o">=</span> <span class="p">{</span><span class="nx">a</span><span class="o">:</span><span class="mi">1</span><span class="p">,</span> <span class="nx">b</span><span class="o">:</span><span class="mi">2</span><span class="p">});</span>
+</pre></div>
+
+
+<p>和数组一样，对象解构的变量也可以设定默认值：</p>
+<div class="hlcode"><pre><span class="kd">var</span> <span class="p">{</span><span class="nx">a</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="nx">b</span> <span class="o">=</span> <span class="mi">5</span><span class="p">}</span> <span class="o">=</span> <span class="p">{</span><span class="nx">a</span><span class="o">:</span> <span class="mi">3</span><span class="p">};</span>
+</pre></div>
+
+
+<p>可用于设定函数的默认参数。
+对嵌套对象的数组解构。<code>var {varname: [{element: alias}]} = obj;</code>
+在迭代时解构对象。 <code>for (var {var: alias} of obj) {...}</code></p>
+<h1 id="javascript_3">JavaScript：函数</h1>
+<h2 id="_7">函数声明与函数表达式</h2>
+<p><strong>函数是对象，函数名是指针。</strong>
+使用不带圆括号的函数名是访问函数指针，而非调用函数。
+函数表达式最后有分号 <code>;</code>。
+Firefox, Opera, Chrome, Safari 通过 <code>name</code> 属性，访问函数名 <code>function.name</code>。</p>
+<p><strong>函数声明提升</strong>：在执行代码前会先读取函数声明。也就是说，可以把函数声明放在调用它的语句之后。
+而对于<strong>函数表达式</strong>，必须等到解析器执行到它所在的代码行，才会真正被解释执行。</p>
+<p>每个函数继承的 <code>toLocaleString()</code> 和 <code>toString()</code> 方法始终都返回函数的代码。</p>
+<div class="hlcode"><pre><span class="kd">var</span> <span class="nx">func</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="mi">5</span><span class="p">)}</span>
+<span class="nx">func</span><span class="p">.</span><span class="nx">toString</span><span class="p">()</span>
+<span class="s1">&#39;function () {console.log(5)}&#39;</span>
+<span class="nx">func</span><span class="p">.</span><span class="nx">toLocaleString</span><span class="p">()</span>
+<span class="s1">&#39;function () {console.log(5)}&#39;</span>
+</pre></div>
+
+
+<p><strong>匿名函数</strong>：<code>function</code> 关键字后面没有标识符。匿名函数的 <code>name</code> 属性为空字符串。
+<strong>函数名本身就是变量</strong>，所以函数也可以作为值来使用。函数既可作为参数传递给另一个函数，又可以将一个函数作为结果返回。
+<strong>两个特殊对象</strong>：arguments 和 this。</p>
+<h2 id="apply-call">apply &amp; call</h2>
+<p>可在特定的作用域中调用函数，等同于设置函数体内 this 对象的值。
+- <code>apply()</code> 方法接受两个参数：一个是在其中运行函数的作用域，另一个是<strong>参数数组</strong>。第二个参数可以为 Array 实例，也可以为 arguments 对象。
+- <code>call()</code> 与 apply 方法的作用相同，区别在于<strong>接受参数的方式不同</strong>。使用 call 时，传递给函数的参数必须<strong>逐个列举</strong>出来。</p>
+<blockquote>
+<p>传递函数并非 apply 和 call 真正的用武之地；他们真正强大的地方是能够<strong>扩充函数赖以运行的作用域</strong>。使用 call 和 apply 来扩充作用域的最大好处，就是<strong>对象不需要与方法有任何耦合关系</strong>。</p>
+</blockquote>
+<p>ECMAScript 5 定义了一个新方法：<code>bind()</code>。该方法会创建一个函数的实例，其 this 值会被绑定到传给 bind 函数的值。</p>
+<h2 id="_8">递归</h2>
+<p><strong>递归函数</strong>：一个函数通过名字调用自身。<code>arguments.callee</code> 是一个指向正在执行的函数的指针，可以用它来实现对函数的递归调用。在编写递归函数时，使用 <code>arguments.callee</code> 总比使用函数名更保险。但在严格模式下，不能通过脚本访问 <code>arguments.callee</code>，访问这个属性会导致错误。此时可以通过命名函数表达式来实现对当前执行的函数的引用。</p>
+<div class="hlcode"><pre><span class="kd">var</span> <span class="nx">factorial</span> <span class="o">=</span> <span class="p">(</span><span class="kd">function</span> <span class="nx">f</span><span class="p">(</span><span class="nx">num</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// 命名函数表达式</span>
+<span class="k">if</span> <span class="p">(</span><span class="nx">num</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+<span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<span class="k">return</span> <span class="nx">num</span> <span class="o">*</span> <span class="nx">f</span><span class="p">(</span><span class="nx">num</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="p">});</span>
+</pre></div>
+
+
+<h2 id="_9">闭包</h2>
+<p>匿名函数 vs 闭包</p>
+<p><strong>闭包</strong>：有权访问<strong>另一个函数作用域</strong>中的<strong>变量</strong>的函数。在一个函数内部创建另一个函数，即可创建闭包。
+理解闭包需要先理解作用域链。作用域链本质上是一个指向变量对象的指针列表，它只引用但不实际包含变量对象。</p>
+<p>一般来讲，当函数执行完毕后，局部活动对象就会被销毁，内存中仅保存全局作用域。但是<strong>闭包函数在执行完毕后仍然携带包含它的函数的作用域</strong>，因此会比其他函数占用更多的内存。过度使用闭包可能会导致内存占用过多，所以<strong>只在绝对必要时考虑使用闭包</strong>。</p>
+<p>作用域链的这种配置机制引出了一个值得注意的副作用，即<strong>闭包只能取得包含函数中任何变量的最后一个值</strong>。</p>
+<h3 id="this">this 对象</h3>
+<p><code>this</code> 对象是在运行时基于函数的执行环境绑定的：在全局函数中，<code>this</code> 等于 window，而当函数被作为某个对象的方法调用时，<code>this</code> 等于那个对象。匿名函数的执行环境具有全局性，因此其 <code>this</code> 对象通常指向 <code>window</code>。</p>
+<p>每个函数在被调用时都会自动取得两个特殊变量：<code>this</code> 和 <code>arguments</code>。内部函数在搜索这两个变量时，只会搜索到其活动对象为止。因此永远不可能直接访问外部函数中的这两个变量。不过，把外部作用域中的 <code>this</code> 对象保存在一个闭包能够访问到的变量里，就可以让闭包访问该对象了。如果想访问作用域中的 <code>arguments</code> 对象，必须将对该对象的引用保存到另一个闭包能够访问的变量中。</p>
+<p><strong>即使是细微的变化，都有可能意外改变 <code>this</code> 的值。</strong></p>
+<h3 id="_10">内存泄漏</h3>
+<p>闭包在 IE9 之前的版本中会导致一些特殊的问题。如果闭包的作用域链中保存着一个 HTML 元素，那么意味着该元素将无法被销毁。 &gt;&gt;&gt; 内存泄漏</p>
+<h2 id="_11">模仿块级作用域</h2>
+<p>JS 没有块级作用域的概念。JS 从不会告诉你是否多次声明了同一个变量，它只会读后续的声明视而不见（但是它会执行后续声明中的变量初始化）。<strong>匿名函数</strong>可以用来模仿块级作用域并避免这个问题。</p>
+<div class="hlcode"><pre><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+<span class="c1">// 这里是块级作用域</span>
+<span class="p">})();</span>
+<span class="c1">// 这种做法可以减少闭包占用的内存问题，因为没有指向匿名函数的引用。只要函数执行完毕，就可以立即销毁其作用域链了。</span>
+</pre></div>
+
+
+<div class="hlcode"><pre><span class="kd">var</span> <span class="nx">someFunction</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+<span class="c1">// 这里是块级作用域</span>
+<span class="p">};</span>
+</pre></div>
+
+
+<p>一般来说，我们都应该尽量少向全局作用域中添加变量和函数。在一个由很多开发人员共同参与的大型应用程序中，过多的全局变量和函数很容易导致命名冲突。</p>
+<h2 id="_12">私有变量</h2>
+<p>严格来讲，JS 中没有私有成员的概念；所有对象属性都是公有的。</p>
+<p>私有变量
+- 函数中定义的变量，可以认为是私有变量，因为在函数外部无法访问这些变量。
+- 私有变量包括
+  - 函数的参数
+  - 局部变量
+  - 在函数内部定义的其他函数</p>
+<p>可以通过闭包来创建用于访问私有变量的公有方法。</p>
+<p><strong>特权方法（previleged method）</strong>：有权访问私有变量和私有函数的公有方法。</p>
+<p>1) 在构造函数中定义特权方法。</p>
+<div class="hlcode"><pre><span class="kd">function</span> <span class="nx">MyObject</span><span class="p">()</span> <span class="p">{</span>
+<span class="c1">// 私有变量和私有函数</span>
+<span class="kd">var</span> <span class="nx">privateVariable</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+<span class="kd">function</span> <span class="nx">privateFunction</span><span class="p">(){</span>
+<span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="c1">//特权方法</span>
+<span class="k">this</span><span class="p">.</span><span class="nx">publicMethod</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(){</span>
+<span class="nx">privateVariable</span><span class="o">++</span><span class="p">;</span>
+<span class="k">return</span> <span class="nx">privateFunction</span><span class="p">();</span>
+<span class="p">};</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>2) 在私有作用域中定义私有变量或函数创建特权方法。</p>
+<div class="hlcode"><pre><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+<span class="err">/ 私有变量和私有函数</span>
+<span class="kd">var</span> <span class="nx">privateVariable</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+<span class="nx">unction</span> <span class="nx">privateFunction</span><span class="p">(){</span>
+<span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="o">/</span> <span class="err">构造函数</span>
+<span class="nx">MyObject</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){</span>
+<span class="p">};</span>
+<span class="sr">/ 公有/</span><span class="err">特权方法</span>
+<span class="nx">MyObject</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">publicMethod</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){</span>
+<span class="nx">privateVariable</span><span class="o">++</span><span class="p">;</span>
+<span class="k">return</span> <span class="nx">privateFunction</span><span class="p">();</span>
+<span class="p">};</span>
+<span class="p">)();</span>
+</pre></div>
+
+
+<p>注意：在初始化未经声明的变量，总是会创建一个全局变量。但是，在严格模式下给未经声明的变量赋值会导致错误。</p>
+<p>这个模式与在构造函数中定义特权方法的主要区别，在于<strong>私有变量和函数是由实例共享的。</strong>由于特权方法是在原型上定义的，因此所有实例都使用同一个函数。而这个特权方法，作为一个闭包，总是保存着对包含作用域的引用。</p>
+<p>以这种方式创建静态私有变量会因为使用原型而增进代码复用，但<strong>每个实例都没有自己的私有变量</strong>。</p>
+<p>3) 模块模式</p>
+<p>单例指只有一个实例的对象。模块模式是为单例创建私有变量和特权方法。模块模式通过为单例添加私有变量和特权方法能够使其得到增强。这种模式在需要对单例进行某些初始化，同时又需要维护其私有变量时是非常有用的。如果必须创建一个对象并以某些数据对其进行初始化，同时还要公开一些能够访问这些私有数据的方法，那么就可以使用模块模式。</p>
+<p>4) 增强的模块模式</p>
+<p><strong>增强的模块模式</strong>：在返回对象之前加入对其增强的代码，这种模式适合那些单例必须是某些类型的实例，同时还必须添加某些属性和（或）方法对其加以增强的情况。</p>
+<p>来源：《JavaScript 高级程序设计 第三版》</p>
+<hr />
+<h1 id="javascript-js">JavaScript: 编写可维护的 JS 代码</h1>
+<p>如何把一个意大利面式的代码仓库整理成一个整洁、有组织并易扩展的项目代码？</p>
+<p>1) 分析项目：把自己当成用户去审视项目
+- 使用网站所有功能，打开开发者工具，看是否有报错或输出日志。
+- Node.js 项目：打开名两行接口检查 api。最好的情况是项目有一个入口，通过入口能将所有模块初始化；最坏的情况也得找到每个业务逻辑的位置。
+- 找出使用的工具，阅读工具的文档，寻找最佳实践。</p>
+<p>2) 深入了解项目
+- 单元测试：测试代码的功能和方法是否按预期调用的一种方法。通过单元测试深入了解代码。</p>
+<p>3) 创建一个规范
+- 建议添加一个 .editorconfig 文件来保证代码在不同的编辑器、IDE 或不同开发者之间的编写风格一致。</p>
+<p>4) 代码缩进
+5) 命名规则
+6) 尽可能使用 lint：ESlint, JSlint, JSHint。
+7) 更新依赖：更新依赖需谨慎，升级依赖没有通用的处理规则。
+   - <code>npm outdated</code> 可以检查哪些依赖版本比较旧</p>
+<p><strong>常见单元测试框架</strong>：karma，jasmine，macha，ava。
+如果测试用户界面，可以使用 Nightwatch.js 和 Dalekjs 这类<strong>浏览器自动测试工具</strong>。</p>
+<p><strong>单元测试与浏览器自动化测试的区别</strong>：前者测试 JS 本身代码，保证所有的模块和通用逻辑能预期运行；后者测试项目的用户界面，保证页面上的元素在预期正确的位置。</p>
+<p><strong>在重构之前先建立好单元测试。</strong></p>
+<p><strong>架构</strong>
+- 知道项目中使用到了何种设计模式。了解该模式，并保证它在整个项目中是一致的。在项目中可以使用不同的设计模式达到不同的目的，但是<strong>绝对不要在一个模块中使用几种不同的设计模式</strong>。
+- 如果项目中没有用到什么架构，尽早作出改变。最基本的架构层级结构分为：
+  - 第三方内容
+  - 模块内容
+  - 数据
+  - 初始化所有模块
+  - 逻辑入口</p>
+<p><strong>模块化</strong>
+- 把功能划分成小的模块。
+- 每个模块对应一个明确的目标功能。
+- 应该无法通过一个模块知道外面代码逻辑。
+- 模块能在不同的场景下复用。</p>
+<p><strong>写注释</strong>
+- 可用 [JSDoc] 来管理文档。</p>
+<p><strong>构建有组织的提交工作流程</strong>
+- 在新分支上重构，不要在主干上直接修改</p>
+<p>来源：
+- [伯乐在线：编写可维护的 JS 代码]</p>
+<h2 id="_13">个人总结</h2>
+<ul>
+<li>了解和分析项目</li>
+<li>建立代码规范</li>
+<li>注释和管理文档</li>
+<li>管理依赖</li>
+<li>重构前进行单元测试</li>
+<li>了解设计模式</li>
+<li>模块化</li>
+<li>良好的版本控制流程习惯</li>
+</ul>
+<h1 id="css-js">CSS 和 JS 加载顺序和位置问题</h1>
+<h2 id="css-head">为什么要把 CSS 样式表放在头部（Head）</h2>
+<p>如果 CSS 放置在头部，页面会渐进渲染。前端工程师需要让页面和样式渐进的显示出来。对于具有大量内容的页面和网络连接效率较低的用户，这是非常重要的。这样可以给用户视觉反馈，来提示页面的渲染进度。这能够整体上提升用户体验。</p>
+<p>如果 CSS 防止在页面文档的底端，这会阻止浏览器渐进的渲染页面。浏览器会阻止渲染，为了避免对页面元素进行重绘。这样会出现一段时间的白屏。影响用户体验。</p>
+<h2 id="js-the-bottom-of-body">为什么要把 JS 脚本放在底端（the Bottom of Body）</h2>
+<p>脚本文件的加载会阻塞并行下载。HTTP/1.1 规定浏览器对于同一个主机的并行下载请求不能超过两个。如果网站图片资源放在多个主机上，那么可以同时超过两个下载请求。但是脚本文件会使浏览器停止其他数据的下载，不同主机的下载都会停止。</p>
+<p>但是在某些情况下，并不能将 JS 脚本放在底端。例如，脚本中包含有使用 <code>document.write</code> 插入部分页面内容，这就不能放在后面加载。</p>
+<p>替代的做法是，使用 <code>defer</code> 加载脚本，这样就可以放在头部了。<code>defer</code> 属性表明了脚本并不包含 <code>document.write</code>，在加载脚本的同时，页面也一同渲染。Firefox 并不支持 <code>defer</code> 属性。</p>
+<h2 id="script-link">如果 script 和 link 都在头部，谁在前，谁在后？</h2>
+<p>对于现代<strong>桌面</strong>浏览器来说，CSS 在 JS 前声明对性能并没有显著提高。甚至，CSS 在 JS 之后，不但不影响性能，反而在特定情况下还能提升性能。不过，这仅限于现代桌面浏览器。对于老式浏览器，仍然需要在 JS 之前声明 CSS 的外部链接。这归功于现代桌面浏览器使用了“推测渲染技术”（speculative parsing），这种技术能够让浏览器往前一步看，总是在脚本下载和执行之前下载其他资源。老式浏览器并不支持该技术，所以把脚本放在前面会影响性能。</p>
+<p>目前，85% 的桌面浏览器均支持推测渲染技术。把脚本放在样式表之前仍然可能会影响 15% 的用户。对于移动端的浏览器，无法获得一个明确的支持该技术的比例。WebKit 内核的移动浏览器已支持该技术。但是即便是最新的 WebKit 内核浏览器，[josh3736]仍然发现 JS 在 CSS 之前会影响性能，这可能与移动设备在 CPU，内存以及网络上的限制而关闭了限制了该功能。</p>
+<p>参考资料：</p>
+<ul>
+<li>[stackoverflow: Where should I put the CSS and Javascript code in an HTML webpage?]</li>
+<li>[stackoverflow: Is the recommendation to include CSS before JavaScript invalid?]</li>
+<li>[stackoverflow: Group of CSS and JS files import at HTML?]</li>
+<li>[Yahoo! Best Practices for Speeding Up Your Web Site]</li>
+</ul>
+  
+</div>
+    </div>
+    <div id="footer">
+      <div class="footer-left">
+        <p>
+        Copyright © 2017 Lixiang.
+        Powered by <a href="http://simiki.org/" target="_blank">Simiki</a>.
+        Theme by <a href="https://git.coding.net/tankywoo/yasimple_x2.git" target="_blank">YASimple_X2</a>.
+        </p>
+      </div> <!-- end footer-left -->
+      <div class="footer-right">
+        <p>Site Generated 2017-04-13 10:50:46</p>
+      </div> <!-- end footer-right -->
+    </div>
+
+    
+    
+  </body>
+</html>

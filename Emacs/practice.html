@@ -6,7 +6,7 @@
     <link rel="shortcut icon" href="/wiki/favicon.ico" type="image/x-icon">
     <link rel="icon" href="/wiki/favicon.ico" type="image/x-icon">
     <link rel="alternate" type="application/atom+xml" href="atom.xml" title="Atom feed">
-    <title>关于该wiki - Wiki by Lixiang</title>
+    <title>Practices - Wiki by Lixiang</title>
     <meta name="keywords" content="wiki, r, python, data science, matlab, emacs, learning"/>
     <meta name="description" content="Lixiang's personal Wiki, powered by emacs and markdown."/>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -20,16 +20,41 @@
   <div id="post-nav">
     <a href="/wiki/">Wiki by Lixiang</a>
     &nbsp;&#187;&nbsp;
-    <a href="/wiki/#about">about</a>
-    &nbsp;&#187;&nbsp;关于该wiki
+    <a href="/wiki/#Emacs">Emacs</a>
+    &nbsp;&#187;&nbsp;Practices
     <span class="updated">Updated&nbsp;
-    2017-03-17
+    2017-03-30 15:32
     </span>
   </div>
 </div>
 <div class="clearfix"></div>
 <div id="content">
-  <p>本wiki用于记录各个领域学习和阅读过程中获得的知识和有价值的信息。使用<a href="https://pages.github.com/">github-pages</a>搭建，<a href="http://simiki.org">Simiki</a>部署，<a href="http://daringfireball.net/projects/markdown/">markdown</a>编写，<a href="https://www.gnu.org/software/emacs/">emacs</a>编辑。</p>
+  <p>想写一个emacs lisp函数，用来基于stardict和eshell查单词，即利用stardict命令行，在eshell中查询单词。</p>
+<ol>
+<li>在mini buffer输入需查询单词</li>
+<li>选择或新建eshell buffer</li>
+<li>在eshell中输入执行查询命令</li>
+</ol>
+<p>输入单词</p>
+<div class="hlcode"><pre><span class="p">(</span><span class="n">setq</span> <span class="n">word</span> <span class="p">(</span><span class="n">read</span><span class="o">-</span><span class="n">string</span> <span class="s">&quot;Please enter word:&quot;</span><span class="p">))</span>
+</pre></div>
+
+
+<p>检查eshell buffer是否存在，如果存在，切换至eshell；否则新建并切换至eshell。</p>
+<p>切换buffer: <code>switch-to-buffer</code></p>
+<p>移动point至buffer最末端。</p>
+<p>在buffer中插入内容</p>
+  
+  <div class="relation">
+    Related:
+    <ul>
+  
+    <li><a href="/wiki/Emacs/emacs.html">Learn Emacs</a></li>
+  
+    <li><a href="/wiki/Web/emacs_configuration.html">前端开发 Emacs 配置</a></li>
+  
+    </ul>
+  </div>
   
 </div>
     </div>

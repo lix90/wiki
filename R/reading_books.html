@@ -6,7 +6,7 @@
     <link rel="shortcut icon" href="/wiki/favicon.ico" type="image/x-icon">
     <link rel="icon" href="/wiki/favicon.ico" type="image/x-icon">
     <link rel="alternate" type="application/atom+xml" href="atom.xml" title="Atom feed">
-    <title>ESS - Wiki by Lixiang</title>
+    <title>Reading Books - Wiki by Lixiang</title>
     <meta name="keywords" content="wiki, r, python, data science, matlab, emacs, learning"/>
     <meta name="description" content="Lixiang's personal Wiki, powered by emacs and markdown."/>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -20,46 +20,52 @@
   <div id="post-nav">
     <a href="/wiki/">Wiki by Lixiang</a>
     &nbsp;&#187;&nbsp;
-    <a href="/wiki/#Emacs">Emacs</a>
-    &nbsp;&#187;&nbsp;ESS
+    <a href="/wiki/#R">R</a>
+    &nbsp;&#187;&nbsp;Reading Books
     <span class="updated">Updated&nbsp;
-    2017-03-18 22:02:16
+    2017-03-22 20:11
     </span>
   </div>
 </div>
 <div class="clearfix"></div>
 <div id="content">
-  <h1 id="_1">补全</h1>
-<h2 id="_2">对象名称的补全</h2>
+  <h1 id="test-r-code-by-richard-cotton">Test R Code by Richard Cotton</h1>
+<h2 id="_1">为什么进行测试？</h2>
 <ul>
-<li>在 ess-mode 中，<kbd>TAB</kbd> 先尝试缩进，如果不能缩紧那么补全对象名。</li>
-<li>在 inferior-ess-mode 中，<kbd>TAB</kbd> 补全光标前的对象名。补全的模式类似于 tcsh，只不过是对象名的补全，而不是文件名。<code>ess-list-object-completions</code>或者<code>M-?</code> 可以列出所有可供补全的对象名。</li>
+<li>大量的复杂的数据处理：自己就很容易犯错</li>
+<li>代码将供其他用户使用：我不犯错不代表别人不犯错</li>
 </ul>
-<p>变量 <code>ess-first-tab-never-complete</code> 可以控制第一次 <kbd>TAB</kbd> 键是否进行补全。如果为 <code>non-nil</code> 表示第一次 <kbd>TAB</kbd> 不进行补全。</p>
-<p>ESS 提供了列表对象和环境对象的补全，例如 <code>$</code> <code>::</code> <code>:::</code>。</p>
-<p><code>M-x ess-resynch</code> 可以刷新所有的对象缓存。</p>
-<h2 id="_3">对函数参数的补全</h2>
-<p>在函数调用时即 <code>(</code> 之后 <kbd>TAB</kbd> 可以提供函数参数的补全项。</p>
-<h2 id="minibuffer">minibuffer 补全</h2>
-<p>ESS 使用 ido 包来提供 minibuffer 补全支持。</p>
-<h2 id="_4">与自动补全包的集成</h2>
-<p>ESS 可以与 auto-complete 包集成，在 ESS 中默认自动激活 auto-complete。</p>
-<h1 id="_5">其他</h1>
-<p>ESS 允许可以开启多个 ESS 进程。通过 <code>M-x ess-request-a-process</code> 可切换到 ESS 进程。</p>
-<p>ESS 提供了 R 解释器的前端，在 inferior buffer 中运行 R 进程。</p>
-<p>在 ESS 中<code>transcript</code>指 iESS 中输出的结果的文本。</p>
+<h2 id="_2">两类测试</h2>
+<blockquote>
+<p>The point of development-time testing is to make sure that you haven’t done something stupid. By contrast, the point of run-time testing is to make sure that the user hasn’t done something stupid.</p>
+</blockquote>
+<ol>
+<li>开发时测试：development-time testing，阻止开发者犯错，<code>testthat</code></li>
+<li>运行时测试：run-time testing，阻止用户犯错，<code>assertive</code></li>
+</ol>
+<h1 id="r-for-data-science-by-hadley-wickham-garrett-grolemund">R for Data Science by Hadley Wickham, Garrett Grolemund</h1>
+<blockquote>
+<p>Rule of thumb: never copy and paste more than twice.</p>
+</blockquote>
+<h2 id="_3">如何减少重复代码？</h2>
+<ol>
+<li>使用函数 functions</li>
+<li>使用迭代 iteration</li>
+<li>使用 imperative programming</li>
+<li>使用 functional programming</li>
+</ol>
   
   <div class="relation">
     Related:
     <ul>
+  
+    <li><a href="/wiki/Emacs/ess.html">ESS</a></li>
   
     <li><a href="/wiki/R/contrasts.html">Making contrasts in R</a></li>
   
     <li><a href="/wiki/R/notes.html">Notes</a></li>
   
     <li><a href="/wiki/R/problems_solved.html">Problems solved</a></li>
-  
-    <li><a href="/wiki/R/reading_books.html">Reading Books</a></li>
   
     </ul>
   </div>

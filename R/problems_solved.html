@@ -1,0 +1,86 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <link rel="Stylesheet" type="text/css" href="/wiki/static/css/colorful.css">
+    <link rel="Stylesheet" type="text/css" href="/wiki/static/css/style.css">
+    <link rel="shortcut icon" href="/wiki/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/wiki/favicon.ico" type="image/x-icon">
+    <link rel="alternate" type="application/atom+xml" href="atom.xml" title="Atom feed">
+    <title>Problems solved - Wiki by Lixiang</title>
+    <meta name="keywords" content="wiki, r, python, data science, matlab, emacs, learning"/>
+    <meta name="description" content="Lixiang's personal Wiki, powered by emacs and markdown."/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+  </head>
+
+  <body>
+    <div id="container" class="typo">
+      
+<div id="header">
+  <div id="post-nav">
+    <a href="/wiki/">Wiki by Lixiang</a>
+    &nbsp;&#187;&nbsp;
+    <a href="/wiki/#R">R</a>
+    &nbsp;&#187;&nbsp;Problems solved
+    <span class="updated">Updated&nbsp;
+    2017-03-21
+    </span>
+  </div>
+</div>
+<div class="clearfix"></div>
+<div id="content">
+  <h1 id="problem-of-installing-units-package">Problem of installing units package</h1>
+<div class="hlcode"><pre><span class="o">-----</span><span class="n">Error</span><span class="o">:</span> <span class="n">libudunits2</span><span class="p">.</span><span class="n">a</span> <span class="n">not</span> <span class="n">found</span><span class="o">-----</span>
+     <span class="n">If</span> <span class="n">the</span> <span class="n">udunits2</span> <span class="n">library</span> <span class="n">is</span> <span class="n">installed</span> <span class="n">in</span> <span class="n">a</span> <span class="n">non</span><span class="o">-</span><span class="n">standard</span> <span class="n">location</span><span class="p">,</span>
+     <span class="n">use</span> <span class="o">--</span><span class="n">configure</span><span class="o">-</span><span class="n">args</span><span class="o">=</span><span class="err">&#39;</span><span class="o">--</span><span class="n">with</span><span class="o">-</span><span class="n">udunits2</span><span class="o">-</span><span class="n">lib</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="err">&#39;</span> <span class="k">for</span> <span class="n">example</span><span class="p">,</span>
+     <span class="n">or</span> <span class="o">--</span><span class="n">configure</span><span class="o">-</span><span class="n">args</span><span class="o">=</span><span class="err">&#39;</span><span class="o">--</span><span class="n">with</span><span class="o">-</span><span class="n">udunits2</span><span class="o">-</span><span class="n">include</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="n">include</span><span class="o">/</span><span class="n">udunits2</span><span class="err">&#39;</span>
+     <span class="n">replacing</span> <span class="n">paths</span> <span class="n">with</span> <span class="n">appropriate</span> <span class="n">values</span> <span class="k">for</span> <span class="n">your</span> <span class="n">installation</span><span class="p">.</span>
+     <span class="n">You</span> <span class="n">can</span> <span class="n">alternatively</span> <span class="n">use</span> <span class="n">the</span> <span class="n">UDUNITS2_INCLUDE</span> <span class="n">and</span> <span class="n">UDUNITS2_LIB</span>
+     <span class="n">environment</span> <span class="n">variables</span><span class="p">.</span>
+     <span class="n">If</span> <span class="n">udunits2</span> <span class="n">is</span> <span class="n">not</span> <span class="n">installed</span><span class="p">,</span> <span class="n">please</span> <span class="n">install</span> <span class="n">it</span><span class="p">.</span>
+     <span class="n">It</span> <span class="n">is</span> <span class="n">required</span> <span class="k">for</span> <span class="n">this</span> <span class="n">package</span><span class="p">.</span>
+</pre></div>
+
+
+<p>已解决：</p>
+<ol>
+<li>安装依赖 <code>udunits</code>: <code>brew install udunits</code></li>
+<li>安装依赖 <code>udunits2</code>: <code>install.packages('udunits2', type = 'source')</code></li>
+<li>安装 <code>units</code>: <code>devtools::install_github('edzer/units', type = 'source')</code> 或者 <code>install.packages('udunits2', type = 'source', configure.args = "--with-udunits2-lib=/usr/local/Cellar/udunits/2.2.20/lib/")</code></li>
+</ol>
+<p>参考：https://github.com/edzer/units/issues/1</p>
+  
+  <div class="relation">
+    Related:
+    <ul>
+  
+    <li><a href="/wiki/Emacs/ess.html">ESS</a></li>
+  
+    <li><a href="/wiki/R/contrasts.html">Making contrasts in R</a></li>
+  
+    <li><a href="/wiki/R/notes.html">Notes</a></li>
+  
+    <li><a href="/wiki/R/reading_books.html">Reading Books</a></li>
+  
+    </ul>
+  </div>
+  
+</div>
+    </div>
+    <div id="footer">
+      <div class="footer-left">
+        <p>
+        Copyright © 2017 Lixiang.
+        Powered by <a href="http://simiki.org/" target="_blank">Simiki</a>.
+        Theme by <a href="https://git.coding.net/tankywoo/yasimple_x2.git" target="_blank">YASimple_X2</a>.
+        </p>
+      </div> <!-- end footer-left -->
+      <div class="footer-right">
+        <p>Site Generated 2017-04-13 10:50:46</p>
+      </div> <!-- end footer-right -->
+    </div>
+
+    
+    
+  </body>
+</html>
