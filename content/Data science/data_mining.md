@@ -2,7 +2,7 @@
 title: "Learn Data Mining"
 author: lixiang
 date: 2017-03-22 19:28
-tag:
+tag: Data mining
 ---
 
 [TOC]

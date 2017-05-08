@@ -2,7 +2,7 @@
 title: "Practices"
 author: lixiang
 date: 2017-03-30 15:32
-tag:
+tag: emacs
 ---
 
 想写一个emacs lisp函数，用来基于stardict和eshell查单词，即利用stardict命令行，在eshell中查询单词。
@@ -23,3 +23,12 @@ tag:
 移动point至buffer最末端。
 
 在buffer中插入内容
+
+# 判断一个mode 是否开启？
+
+`boundp` 判断符号的值是否为void
+`fboundp` 判断符号的函数定义是否为void
+
+`(boundp 'some-mode)` 判断mode是否为void
+`(and (boundp 'some-mode) some-mode)` 若某mode不为void，则启动该mode。
+`(bound-or-true-p some-mode)` 等同于上面一句

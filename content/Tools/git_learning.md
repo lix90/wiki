@@ -2,7 +2,7 @@
 title: "Learn Git"
 author: lixiang
 date: 2017-03-22 19:23
-tag:
+tag: git
 ---
 
 

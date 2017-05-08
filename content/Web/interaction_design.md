@@ -2,7 +2,7 @@
 title: "Interaction Design"
 author: lixiang
 date: 2017-03-22 19:30
-tag:
+tag: design
 ---
 
 # 交互设计：按钮

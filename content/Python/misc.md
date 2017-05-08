@@ -33,3 +33,7 @@ python -m matlab_kernel install
 printf "export MATLAB_EXECUTABLE=/Applications/MATLAB_2014b.app/bin/matlab" >> ~/.bash_profile
 ```
 
+
+
+
+

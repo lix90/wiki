@@ -2,7 +2,7 @@
 title: "Reading Books"
 author: lixiang
 date: 2017-03-22 20:11
-tag:
+tag: r
 ---
 
 # Test R Code by Richard Cotton

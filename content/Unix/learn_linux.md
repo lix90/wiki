@@ -2,7 +2,7 @@
 title: "Learn Linux"
 author: lixiang
 date: 2017-03-22 19:29
-tag:
+tag: linux
 ---
 
 # 鸟哥 Linux 私房菜学习记录
