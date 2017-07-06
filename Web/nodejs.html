@@ -1,0 +1,73 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <link rel="Stylesheet" type="text/css" href="/wiki/static/css/colorful.css">
+    <link rel="Stylesheet" type="text/css" href="/wiki/static/css/style.css">
+    <link rel="shortcut icon" href="/wiki/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/wiki/favicon.ico" type="image/x-icon">
+    <link rel="alternate" type="application/atom+xml" href="atom.xml" title="Atom feed">
+    <title>Nodejs notes - Wiki by Lixiang</title>
+    <meta name="keywords" content="wiki, r, python, data science, matlab, emacs, learning"/>
+    <meta name="description" content="Lixiang's personal Wiki, powered by emacs and markdown."/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+  </head>
+
+  <body>
+    <div id="container" class="typo">
+      
+<div id="header">
+  <div id="post-nav">
+    <a href="/wiki/">Wiki by Lixiang</a>
+    &nbsp;&#187;&nbsp;
+    <a href="/wiki/#Web">Web</a>
+    &nbsp;&#187;&nbsp;Nodejs notes
+    <span class="updated">Updated&nbsp;
+    2017-04-19 09:55
+    </span>
+  </div>
+</div>
+<div class="clearfix"></div>
+<div id="content">
+  <h1 id="books">Books</h1>
+<p><a href="https://nikhilm.github.io/uvbook/index.html">Ebook: An Introduction to libuv</a></p>
+<h1 id="stackoverflow-questions">StackOverflow Questions</h1>
+<p><a href="http://stackoverflow.com/questions/22644328/when-is-the-thread-pool-used">When is the thread pool used?</a></p>
+<blockquote>
+<p>Node runs in <strong>a single event loop</strong>. It's single threaded, and you only ever get that one thread. All of the javascript you write executes in this loop, and if a blocking operation happens in that code, then it will block the entire loop and nothing else will happen until it finishes. This is the typically single threaded nature of node that you hear so much about. But, it's not the whole picture.</p>
+<p>Certain functions and modules, usually written in C/C++, support asynchronous I/O. When you call these functions and methods, they internally manage passing the call on to <strong>a worker thread</strong>. ... the strategy used by libuv to achieve asynchronous I/O is not always a thread pool, specifically in the case of the http module a different strategy appears to be used at this time.</p>
+<ul>
+<li>Any external module that you include in your project that makes use of native C++ and libuv is likely to use the thread pool (think: database access)</li>
+<li>libuv has a default thread pool size of 4, and uses a queue to manage access to the thread pool</li>
+<li>You can mitigate this by increasing the size of the thread pool through the <code>UV_THREADPOOL_SIZE</code> environment variable, so long as you do it before the thread pool is required and created: <code>process.env.UV_THREADPOOL_SIZE = 10;</code></li>
+</ul>
+</blockquote>
+<p><a href="http://stackoverflow.com/questions/15526546/confusion-about-node-js-internal-asynchronous-i-o-mechanism">Confusion about node.js internal asynchronous I/O mechanism</a></p>
+<blockquote>
+<ul>
+<li><code>libuv</code> perfroms async file I/O with a thread pool like <code>libeio</code>.</li>
+<li><code>libuv</code> does async network I/O based on the async I/O interfaces in different platforms, such as <code>epoll</code> <code>kqueue</code> <code>IOCP</code>, <strong>without a thread pool</strong>. There is a event loop which runs on the main thread of <code>uv</code> which polls the I/O events and processes them.</li>
+<li>the thread pool inside <code>libuv</code> is <strong>a fixed size thread pool</strong>.</li>
+</ul>
+</blockquote>
+<p><a href="http://stackoverflow.com/questions/25568613/node-js-event-loop">Node.js Event loop</a></p>
+  
+</div>
+    </div>
+    <div id="footer">
+      <div class="footer-left">
+        <p>
+        Copyright © 2017 Lixiang.
+        Powered by <a href="http://simiki.org/" target="_blank">Simiki</a>.
+        Theme by <a href="https://git.coding.net/tankywoo/yasimple_x2.git" target="_blank">YASimple_X2</a>.
+        </p>
+      </div> <!-- end footer-left -->
+      <div class="footer-right">
+        <p>Site Generated 2017-07-06 18:24:12</p>
+      </div> <!-- end footer-right -->
+    </div>
+
+    
+    
+  </body>
+</html>

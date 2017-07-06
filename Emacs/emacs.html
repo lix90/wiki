@@ -29,7 +29,13 @@
 </div>
 <div class="clearfix"></div>
 <div id="content">
-  <h2 id="_1">快捷键设置</h2>
+  <div class="toc"><span class="toctitle">Table of Contents</span><ul>
+<li><a href="#_1">快捷键设置</a></li>
+<li><a href="#_2">: &amp; 符号</a></li>
+<li><a href="#major-mode">使用多major mode模式</a></li>
+</ul>
+</div>
+<h1 id="_1">快捷键设置</h1>
 <p>四种类型的快捷键设置：
 - 全局快捷键：<code>(global-set-key (kbd "A") 'your-command')</code>
 - 全局映射键：<code>(define-key key-translation-map (kbd "A") (kbd "B"))</code>
@@ -45,7 +51,7 @@
 快捷键的优先级：<code>key-translation-map &gt; minor-mode-map &gt; local-set-key &gt; global-set-key</code>
 在设置局部键时，需写出相应的代理映射键（prefix）。</p>
 <p>说明：整理自Emacs（微信公众号）文章《那就从妖艳酷炫的快捷键开始吧！（一）》</p>
-<h2 id="_2">: &amp; 符号</h2>
+<h1 id="_2">: &amp; 符号</h1>
 <ul>
 <li><code>:foo</code> 在 Emacs Lisp 中是 <code>keyword symbol</code></li>
 <li>在 <code>use-package</code> 中被用作 <code>keyword arguments</code></li>
@@ -56,14 +62,23 @@
 <p>宏的实参不会在宏被求值的时候立刻求值，而是会被当做数据直接传递给宏。因此宏可以自己决定那些代码在什么时候被求值。</p>
 </blockquote>
 <p>参考 emacs-china 社区<a href="https://emacs-china.org/t/emacslisp/1566">问答</a></p>
+<h1 id="major-mode">使用多major mode模式</h1>
+<ul>
+<li>polymode</li>
+<li>mmm-mode</li>
+</ul>
   
   <div class="relation">
     Related:
     <ul>
   
+    <li><a href="/wiki/Emacs/misc.html">Misc</a></li>
+  
     <li><a href="/wiki/Emacs/practice.html">Practices</a></li>
   
     <li><a href="/wiki/Web/emacs_configuration.html">前端开发 Emacs 配置</a></li>
+  
+    <li><a href="/wiki/Web/emacs_webdev.html">Emacs Web Development</a></li>
   
     </ul>
   </div>
@@ -79,7 +94,7 @@
         </p>
       </div> <!-- end footer-left -->
       <div class="footer-right">
-        <p>Site Generated 2017-04-13 10:50:46</p>
+        <p>Site Generated 2017-07-06 18:24:12</p>
       </div> <!-- end footer-right -->
     </div>
 

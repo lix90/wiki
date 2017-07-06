@@ -6,7 +6,7 @@
     <link rel="shortcut icon" href="/wiki/favicon.ico" type="image/x-icon">
     <link rel="icon" href="/wiki/favicon.ico" type="image/x-icon">
     <link rel="alternate" type="application/atom+xml" href="atom.xml" title="Atom feed">
-    <title>Practices - Wiki by Lixiang</title>
+    <title>字体 - Wiki by Lixiang</title>
     <meta name="keywords" content="wiki, r, python, data science, matlab, emacs, learning"/>
     <meta name="description" content="Lixiang's personal Wiki, powered by emacs and markdown."/>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -20,46 +20,46 @@
   <div id="post-nav">
     <a href="/wiki/">Wiki by Lixiang</a>
     &nbsp;&#187;&nbsp;
-    <a href="/wiki/#Emacs">Emacs</a>
-    &nbsp;&#187;&nbsp;Practices
+    <a href="/wiki/#Web">Web</a>
+    &nbsp;&#187;&nbsp;字体
     <span class="updated">Updated&nbsp;
-    2017-03-30 15:32
+    2017-04-19 09:13
     </span>
   </div>
 </div>
 <div class="clearfix"></div>
 <div id="content">
-  <p>想写一个emacs lisp函数，用来基于stardict和eshell查单词，即利用stardict命令行，在eshell中查询单词。</p>
-<ol>
-<li>在mini buffer输入需查询单词</li>
-<li>选择或新建eshell buffer</li>
-<li>在eshell中输入执行查询命令</li>
-</ol>
-<p>输入单词</p>
-<div class="hlcode"><pre><span class="p">(</span><span class="n">setq</span> <span class="n">word</span> <span class="p">(</span><span class="n">read</span><span class="o">-</span><span class="n">string</span> <span class="s">&quot;Please enter word:&quot;</span><span class="p">))</span>
-</pre></div>
-
-
-<p>检查eshell buffer是否存在，如果存在，切换至eshell；否则新建并切换至eshell。</p>
-<p>切换buffer: <code>switch-to-buffer</code></p>
-<p>移动point至buffer最末端。</p>
-<p>在buffer中插入内容</p>
-<h1 id="mode">判断一个mode 是否开启？</h1>
-<p><code>boundp</code> 判断符号的值是否为void
-<code>fboundp</code> 判断符号的函数定义是否为void</p>
-<p><code>(boundp 'some-mode)</code> 判断mode是否为void
-<code>(and (boundp 'some-mode) some-mode)</code> 若某mode不为void，则启动该mode。
-<code>(bound-or-true-p some-mode)</code> 等同于上面一句</p>
+  <ul>
+<li><a href="http://zenozeng.github.io/Free-Chinese-Fonts/">免费中文字体一览</a></li>
+<li><a href="https://github.com/zenozeng/fonts.css">跨平台 CSS 中文字体解决方案</a></li>
+<li><a href="https://ruby-china.org/topics/14005">Web 中文字体应用指南</a></li>
+</ul>
+<h1 id="_1"><a href="https://www.zhihu.com/question/19911793">如何保证网页的字体在各平台都尽量显示为最高质量的黑体？</a></h1>
+<h2 id="_2">各平台最佳<strong>正文</strong>字体现状</h2>
+<h3 id="windows">Windows</h3>
+<ul>
+<li>中易宋体：Vista 之前</li>
+<li>微软雅黑：Vista 之后</li>
+<li>在没有开启 ClearType 时，微软雅黑显示效果非常糟糕。</li>
+</ul>
+<blockquote>
+<p>Windows 的主要问题在于字体渲染技术依赖过多的人工干预，且 ClearType 的抗锯齿风格不适合汉字。近年来有 DirectWrite 新的抗锯齿风格加入，在大字号时字体渲染效果大有好转，但正文字号的改善有限，且各浏览器并未跟上 DirectWrite 的步伐，以致 Windows 上的字体渲染情况较为混乱。(梁海)</p>
+</blockquote>
+<h3 id="mac-os-x">Mac OS X</h3>
+<ul>
+<li>华文黑体：黑体-简</li>
+<li>冬青黑体简体中文：OS X 10.6 开始，10.7 之前称为 Hiragino Sans GB</li>
+</ul>
+<h3 id="ios">iOS</h3>
+<p>华文黑体</p>
+<h3 id="gnulinux">GNU/Linux</h3>
+<p>各 Linux 发行版默认的字体渲染效果参差不齐，不指定字体可能最好。</p>
+<h3 id="android">Android</h3>
+<p>Droid Sans</p>
   
   <div class="relation">
     Related:
     <ul>
-  
-    <li><a href="/wiki/Emacs/emacs.html">Learn Emacs</a></li>
-  
-    <li><a href="/wiki/Emacs/misc.html">Misc</a></li>
-  
-    <li><a href="/wiki/Web/emacs_configuration.html">前端开发 Emacs 配置</a></li>
   
     <li><a href="/wiki/Web/emacs_webdev.html">Emacs Web Development</a></li>
   

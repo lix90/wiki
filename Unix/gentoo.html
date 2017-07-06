@@ -1,0 +1,312 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <link rel="Stylesheet" type="text/css" href="/wiki/static/css/colorful.css">
+    <link rel="Stylesheet" type="text/css" href="/wiki/static/css/style.css">
+    <link rel="shortcut icon" href="/wiki/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/wiki/favicon.ico" type="image/x-icon">
+    <link rel="alternate" type="application/atom+xml" href="atom.xml" title="Atom feed">
+    <title>Gentoo Notes - Wiki by Lixiang</title>
+    <meta name="keywords" content="wiki, r, python, data science, matlab, emacs, learning"/>
+    <meta name="description" content="Lixiang's personal Wiki, powered by emacs and markdown."/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+  </head>
+
+  <body>
+    <div id="container" class="typo">
+      
+<div id="header">
+  <div id="post-nav">
+    <a href="/wiki/">Wiki by Lixiang</a>
+    &nbsp;&#187;&nbsp;
+    <a href="/wiki/#Unix">Unix</a>
+    &nbsp;&#187;&nbsp;Gentoo Notes
+    <span class="updated">Updated&nbsp;
+    2017-05-09 13:29
+    </span>
+  </div>
+</div>
+<div class="clearfix"></div>
+<div id="content">
+  <h1 id="_1">字体</h1>
+<p>mplus-spa</p>
+<p>手动安装字体</p>
+<div class="hlcode"><pre><span class="n">cp</span> <span class="o">&lt;</span><span class="n">font</span> <span class="n">filename</span><span class="o">&gt;</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">fonts</span><span class="o">/</span>
+<span class="cp"># 建立字体索引信息，更新字体缓存</span>
+<span class="n">cd</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">fonts</span><span class="o">/</span>
+<span class="n">mkfontscale</span>
+<span class="n">mkfontdir</span>
+<span class="n">fc</span><span class="o">-</span><span class="n">cache</span>
+</pre></div>
+
+
+<p>显示默认字体</p>
+<div class="hlcode"><pre><span class="n">fc</span><span class="o">-</span><span class="n">match</span> <span class="s">&quot;sans&quot;</span>
+<span class="n">fc</span><span class="o">-</span><span class="n">match</span> <span class="s">&quot;serif&quot;</span>
+<span class="n">fc</span><span class="o">-</span><span class="n">match</span> <span class="s">&quot;mono&quot;</span>
+</pre></div>
+
+
+<p>显示已安装中文字体</p>
+<div class="hlcode"><pre><span class="n">fc</span><span class="o">-</span><span class="n">list</span> <span class="o">:</span><span class="n">lang</span><span class="o">=</span><span class="n">zh</span>
+</pre></div>
+
+
+<h1 id="add-gentoo-zh-overlay">add gentoo-zh overlay</h1>
+<p>gentoo-china-overlay &amp; gentoo-taiwan-overlay已经合并成 gentoo-zh</p>
+<div class="hlcode"><pre><span class="n">sudo</span> <span class="n">emerge</span> <span class="o">-</span><span class="n">avt</span> <span class="n">layman</span>
+<span class="n">sudo</span> <span class="n">layman</span> <span class="o">-</span><span class="n">L</span>
+<span class="n">sudo</span> <span class="n">layman</span> <span class="o">-</span><span class="n">a</span> <span class="n">gentoo</span><span class="o">-</span><span class="n">zh</span>
+</pre></div>
+
+
+<h1 id="use-eix">use eix</h1>
+<h1 id="_2">查看内核编译配置</h1>
+<div class="hlcode"><pre><span class="n">zcat</span> <span class="o">/</span><span class="n">proc</span><span class="o">/</span><span class="n">config</span><span class="p">.</span><span class="n">gz</span>
+<span class="n">cat</span> <span class="o">/</span><span class="n">boot</span><span class="o">/</span><span class="n">config</span><span class="o">-</span><span class="err">`</span><span class="n">uname</span> <span class="o">-</span><span class="n">r</span><span class="err">`</span>
+</pre></div>
+
+
+<h1 id="_3">编译内核</h1>
+<div class="hlcode"><pre><span class="n">cd</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">linux</span>
+<span class="n">cp</span> <span class="p">.</span><span class="n">config</span> <span class="o">/</span><span class="n">config</span><span class="o">-</span><span class="err">`</span><span class="n">uname</span> <span class="o">-</span><span class="n">r</span><span class="err">`</span> <span class="err">##</span> <span class="n">back</span> <span class="n">up</span> <span class="n">kernel</span> <span class="n">config</span>
+
+<span class="n">make</span> <span class="n">menuconfig</span>
+
+<span class="n">make</span> <span class="o">&amp;&amp;</span> <span class="n">make</span> <span class="n">modules_install</span>
+<span class="n">make</span> <span class="n">install</span> <span class="err">##</span> <span class="n">copy</span> <span class="n">kernel</span> <span class="n">image</span> <span class="n">to</span> <span class="o">/</span><span class="n">boot</span>
+</pre></div>
+
+
+<h1 id="ntfs">挂载ntfs移动硬盘</h1>
+<ol>
+<li>
+<p>配置内核</p>
+<blockquote>
+<p>File systems  —&gt;
+  DOS/FAT/NT Filesystems  —&gt;
+    &lt;<em>&gt; NTFS file system support
+    [ ]   NTFS debugging support
+    [</em>]   NTFS write support</p>
+<p>&lt;*&gt; Filesystem in Userspace support</p>
+</blockquote>
+</li>
+<li>
+<p>编译ntfs-3g</p>
+</li>
+</ol>
+<div class="hlcode"><pre><span class="n">emerge</span> <span class="n">ntfs3g</span>
+</pre></div>
+
+
+<ol>
+<li>挂载</li>
+</ol>
+<div class="hlcode"><pre><span class="n">mkdir</span> <span class="o">~/</span><span class="n">hd</span>
+<span class="n">sudo</span> <span class="n">mount</span> <span class="o">-</span><span class="n">t</span> <span class="n">ntfs</span><span class="o">-</span><span class="mi">3</span><span class="n">g</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">sd</span><span class="o">*</span> <span class="o">~/</span><span class="n">hd</span>
+</pre></div>
+
+
+<h1 id="tty-console">tty console</h1>
+<blockquote>
+<p>使用文字介面的時候，會看到tty1、tty2之類的名稱，這是什麼東西呢？TTY是「Teletypes」這個字的縮寫，原意是打字機，引申為打字輸入的介面，也就是終端機(Terminal)的文字輸入介面。tty之後接的號碼，可以想像成是第幾台終端機，例如tty1就是第一台終端機。Linux預設有七台終端機，分別是tty1、tty2、tty3、tty4、tty5、tty6、tty7，tty7一般作為X-Window圖形介面使用。切換不同tty的方式很簡單，只要使用鍵盤組合鍵即可達成，按法為：「ctrl + alt + F1~F7」，「F」的號碼就代表tty的號碼。如按下「ctrl + alt + F5」就可以切換到tty5。<a href="https://magiclen.org/linux-text/">link</a></p>
+</blockquote>
+<p><code>Ctrl+Alt+F1-F6</code>
+<code>Ctrl+Alt+F7</code> 返回图形界面</p>
+<h1 id="_4">触控板配置</h1>
+<p>个人使用xfce, 自带设置界面, 基本满足要求.</p>
+<h1 id="texlive2016">配置texlive2016</h1>
+<p>set repository</p>
+<div class="hlcode"><pre><span class="n">tlmgr</span> <span class="n">option</span> <span class="n">repository</span> <span class="n">http</span><span class="o">:</span><span class="c1">//mirrors.aliyun.com/CTAN/systems/texlive/tlnet/</span>
+</pre></div>
+
+
+<h1 id="xfce">配置xfce</h1>
+<div class="hlcode"><pre><span class="n">sudo</span> <span class="n">emerge</span> <span class="o">-</span><span class="n">avt</span> <span class="n">thunar</span><span class="o">-</span><span class="n">vcs</span><span class="o">-</span><span class="n">plugin</span> <span class="n">xfce4</span><span class="o">-</span><span class="n">clipman</span><span class="o">-</span><span class="n">plugin</span> <span class="n">xfce4</span><span class="o">-</span><span class="n">composite</span><span class="o">-</span><span class="n">editor</span> <span class="n">xfce4</span><span class="o">-</span><span class="n">cpufreq</span><span class="o">-</span><span class="n">plugin</span> <span class="n">xfce4</span><span class="o">-</span><span class="n">cpugraph</span><span class="o">-</span><span class="n">plugin</span> <span class="n">xfce4</span><span class="o">-</span><span class="n">datetime</span><span class="o">-</span><span class="n">plugin</span> <span class="n">xfce4</span><span class="o">-</span><span class="n">diskperf</span><span class="o">-</span><span class="n">plugin</span> <span class="n">xfce4</span><span class="o">-</span><span class="n">indicator</span><span class="o">-</span><span class="n">plugin</span> <span class="n">xfce4</span><span class="o">-</span><span class="n">kbdleds</span><span class="o">-</span><span class="n">plugin</span> <span class="n">xfce4</span><span class="o">-</span><span class="n">linelight</span><span class="o">-</span><span class="n">plugin</span> <span class="n">xfce4</span><span class="o">-</span><span class="n">mailwatch</span><span class="o">-</span><span class="n">plugin</span> <span class="n">xfce4</span><span class="o">-</span><span class="n">mixer</span> <span class="n">xfce4</span><span class="o">-</span><span class="n">netload</span><span class="o">-</span><span class="n">plugin</span> <span class="n">xfce4</span><span class="o">-</span><span class="n">netspeed</span><span class="o">-</span><span class="n">plugin</span> <span class="n">xfce4</span><span class="o">-</span><span class="n">notes</span><span class="o">-</span><span class="n">plugin</span> <span class="n">xfce4</span><span class="o">-</span><span class="n">notifyd</span> <span class="n">xfce4</span><span class="o">-</span><span class="n">places</span><span class="o">-</span><span class="n">plugin</span> <span class="n">xfce4</span><span class="o">-</span><span class="n">playercontrol</span><span class="o">-</span><span class="n">plugin</span> <span class="n">xfce4</span><span class="o">-</span><span class="n">pulseaudio</span><span class="o">-</span><span class="n">plugin</span> <span class="n">xfce4</span><span class="o">-</span><span class="n">screenshooter</span> <span class="n">xfce4</span><span class="o">-</span><span class="n">systemload</span><span class="o">-</span><span class="n">plugin</span> <span class="n">xfce4</span><span class="o">-</span><span class="n">time</span><span class="o">-</span><span class="n">out</span><span class="o">-</span><span class="n">plugin</span> <span class="n">xfce4</span><span class="o">-</span><span class="n">timer</span><span class="o">-</span><span class="n">plugin</span> <span class="n">xfce4</span><span class="o">-</span><span class="n">vala</span> <span class="n">xfce4</span><span class="o">-</span><span class="n">volumed</span> <span class="n">xfce4</span><span class="o">-</span><span class="n">wavelan</span><span class="o">-</span><span class="n">plugin</span> <span class="n">xfce4</span><span class="o">-</span><span class="n">whiskermenu</span><span class="o">-</span><span class="n">plugin</span> <span class="n">xfce4</span><span class="o">-</span><span class="n">windowck</span><span class="o">-</span><span class="n">plugin</span> <span class="n">xfce4</span><span class="o">-</span><span class="n">xkb</span><span class="o">-</span><span class="n">plugin</span>
+</pre></div>
+
+
+<h1 id="pandoc">安装pandoc</h1>
+<h1 id="_5">配置网络</h1>
+<h2 id="networkmanager">NetworkManager</h2>
+<p>networkmanager不能与其他网络管理服务同时工作。确保同时只能运行一个网络管理服务。</p>
+<div class="hlcode"><pre><span class="n">rc</span><span class="o">-</span><span class="n">service</span> <span class="n">NetworkManager</span> <span class="n">start</span>
+<span class="n">rc</span><span class="o">-</span><span class="n">update</span> <span class="n">add</span> <span class="n">NetworkManager</span> <span class="k">default</span>
+</pre></div>
+
+
+<p>nmcli</p>
+<p>列出wifi列表：<code>nmcli dev wifi</code>
+连接wifi：<code>nmcli dev wifi connect &lt;name&gt; password &lt;password&gt;</code>
+断开wifi：<code>nmcli dev disconnect wifi</code></p>
+<h2 id="_6">获取网络设备信息</h2>
+<p>获取基本信息（bus-id, manufacturer, model）：<code>lspci | grep -i net</code>
+硬件信息：<code>lshw -class network</code>
+硬件与配置信息：<code>inxi -N -v 7</code>
+网络配置：<code>ip ad show</code></p>
+<h2 id="wifi">配置无线wifi</h2>
+<p>检测wifi驱动：lspci或者lsusb</p>
+<div class="hlcode"><pre><span class="n">sudo</span> <span class="n">lspci</span> <span class="o">-</span><span class="n">k</span>
+<span class="p">...</span>
+<span class="mo">03</span><span class="o">:</span><span class="mf">00.0</span> <span class="n">Network</span> <span class="n">controller</span><span class="o">:</span> <span class="n">Realtek</span> <span class="n">Semiconductor</span> <span class="n">Co</span><span class="p">.,</span> <span class="n">Ltd</span><span class="p">.</span> <span class="n">RTL8192EE</span> <span class="n">PCIe</span> <span class="n">Wireless</span> <span class="n">Network</span> <span class="n">Adapter</span>
+    <span class="nl">Subsystem:</span> <span class="n">Realtek</span> <span class="n">Semiconductor</span> <span class="n">Co</span><span class="p">.,</span> <span class="n">Ltd</span><span class="p">.</span> <span class="n">RTL8192EE</span> <span class="n">PCIe</span> <span class="n">Wireless</span> <span class="n">Network</span> <span class="n">Adapter</span>
+</pre></div>
+
+
+<p><a href="http://damienfirmenich.com/2015/04/12/t450s-rtl8191ee.html">Fixing the Realtek rtl8192ee driver on Linux</a>
+<a href="https://wiki.gentoo.org/wiki/NetworkManager">Network Manager</a></p>
+<div class="hlcode"><pre><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="o">:</span><span class="c1">//github.com/lwfinger/rtlwifi_new</span>
+
+<span class="n">cd</span> <span class="n">rtlwifi_new</span>
+<span class="n">make</span>
+
+<span class="n">sudo</span> <span class="n">make</span> <span class="n">install</span>
+
+<span class="cp">## reboot</span>
+<span class="cp">## sudo modprobe rtl8192ee</span>
+
+<span class="cp">## repeat after every kernel update</span>
+<span class="n">echo</span> <span class="s">&quot;options rtl8192ee swenc=1&quot;</span> <span class="o">&gt;</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">modprobe</span><span class="p">.</span><span class="n">d</span><span class="o">/</span><span class="n">rtl8192ee</span><span class="p">.</span><span class="n">conf</span>
+<span class="n">sudo</span> <span class="n">rmmod</span> <span class="n">rtl8192ee</span>
+<span class="n">sudo</span> <span class="n">modprobe</span> <span class="n">rtl8192ee</span>
+</pre></div>
+
+
+<p>安装rtfwifi_new时保存</p>
+<div class="hlcode"><pre><span class="n">lexiangli</span><span class="err">@</span><span class="n">gentoo</span> <span class="o">~/</span><span class="n">Documents</span><span class="o">/</span><span class="n">gh_repos</span><span class="o">/</span><span class="n">rtlwifi_new</span> <span class="err">$</span> <span class="n">sudo</span> <span class="n">make</span> <span class="n">install</span>
+<span class="nl">Password:</span> 
+<span class="n">make</span> <span class="o">-</span><span class="n">C</span> <span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">modules</span><span class="o">/</span><span class="mf">4.9.16</span><span class="o">-</span><span class="n">gentoo</span><span class="o">/</span><span class="n">build</span> <span class="n">M</span><span class="o">=/</span><span class="n">home</span><span class="o">/</span><span class="n">alexiangli</span><span class="o">/</span><span class="n">Documents</span><span class="o">/</span><span class="n">gh_repos</span><span class="o">/</span><span class="n">rtlwifi_new</span> <span class="n">modules</span>
+<span class="n">make</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">:</span> <span class="n">Entering</span> <span class="n">directory</span> <span class="err">&#39;</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">linux</span><span class="o">-</span><span class="mf">4.9.16</span><span class="o">-</span><span class="n">gentoo</span><span class="err">&#39;</span>
+  <span class="n">Building</span> <span class="n">modules</span><span class="p">,</span> <span class="n">stage</span> <span class="mf">2.</span>
+  <span class="n">MODPOST</span> <span class="mi">15</span> <span class="n">modules</span>
+<span class="n">make</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">:</span> <span class="n">Leaving</span> <span class="n">directory</span> <span class="err">&#39;</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">linux</span><span class="o">-</span><span class="mf">4.9.16</span><span class="o">-</span><span class="n">gentoo</span><span class="err">&#39;</span>
+<span class="n">Making</span> <span class="n">backups</span>
+<span class="nl">tar:</span> <span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">modules</span><span class="o">/</span><span class="mf">4.9.16</span><span class="o">-</span><span class="n">gentoo</span><span class="o">/</span><span class="n">kernel</span><span class="o">/</span><span class="n">drivers</span><span class="o">/</span><span class="n">net</span><span class="o">/</span><span class="n">wireless</span><span class="o">/</span><span class="n">rtlwifi</span><span class="o">:</span> <span class="n">Cannot</span> <span class="n">stat</span><span class="o">:</span> <span class="n">No</span> <span class="n">such</span> <span class="n">file</span> <span class="n">or</span> <span class="n">directory</span>
+<span class="nl">tar:</span> <span class="n">Exiting</span> <span class="n">with</span> <span class="n">failure</span> <span class="n">status</span> <span class="n">due</span> <span class="n">to</span> <span class="n">previous</span> <span class="n">errors</span>
+<span class="nl">make:</span> <span class="o">***</span> <span class="p">[</span><span class="n">Makefile</span><span class="o">:</span><span class="mi">62</span><span class="o">:</span> <span class="n">install</span><span class="p">]</span> <span class="n">Error</span> <span class="mi">2</span>
+</pre></div>
+
+
+<p>解决：新建报错中的路径 <code>sudo mkdir &lt;directory&gt; -p</code>, 然后继续执行 <code>sudo make install</code></p>
+<h1 id="add-startup-service">Add startup service</h1>
+<h1 id="_7">配置声卡</h1>
+<p>配置内核
+将alsa加入全局USE: <code>euse -E alsa</code>
+安装 <code>emerge -avt alsa-utils</code>
+保证用户在audio用户组中
+开启alsa服务
+开机启动
+调节音量工具alsamixer
+测试声音 <code>speaker-test -t wav -c 2</code></p>
+<h1 id="launcher">launcher</h1>
+<p>albert <code>emerge -avt albert</code>
+synapse <code>emerge -avt synapse</code></p>
+<h1 id="u">格式化U盘</h1>
+<p>format USB disk into fat32</p>
+<div class="hlcode"><pre><span class="n">sudo</span> <span class="n">fdisk</span> <span class="o">-</span><span class="n">l</span>
+<span class="cp"># fdisk /dev/sd*</span>
+<span class="cp"># make new partition of fat32 type</span>
+<span class="n">emerge</span> <span class="o">-</span><span class="n">avt</span> <span class="n">dosfstools</span>
+<span class="cp"># echo &#39;export PATH=&quot;/usr/sbin:$PATH&quot; &gt;&gt; .bashrc&#39;</span>
+<span class="n">sudo</span> <span class="n">mkfs</span><span class="p">.</span><span class="n">vfat</span> <span class="o">-</span><span class="n">n</span> <span class="s">&quot;name&quot;</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">sd</span><span class="o">*</span>
+</pre></div>
+
+
+<h1 id="copy-with-progress-bar">copy with progress bar</h1>
+<ol>
+<li><code>pv *** &gt; ***</code></li>
+<li><code>rsync -ah progress source-file destination</code></li>
+</ol>
+<h1 id="cannot-switch-fcitx-to-chinese-input-mode-in-konsole">Cannot switch fcitx to chinese input mode in Konsole</h1>
+<p><code>sudo emerge -avt fcitx-qt5</code></p>
+<h1 id="fx-sublime-text-3-chinese-input-via-fcitx">fx sublime-text-3 chinese input via fcitx</h1>
+<p>git clone <a href="https://github.com/lyfeyaj/sublime-text-imfix">sublime-text-imfix</a></p>
+<div class="hlcode"><pre><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="o">:</span><span class="c1">//github.com/lyfeyaj/sublime-text-imfix</span>
+<span class="n">cd</span> <span class="n">sublime</span><span class="o">-</span><span class="n">text</span><span class="o">-</span><span class="n">imfix</span> <span class="o">&amp;&amp;</span> <span class="p">.</span><span class="o">/</span><span class="n">sublime</span><span class="o">-</span><span class="n">imfix</span>
+<span class="cp"># unmerge sublime-text</span>
+<span class="cp"># remerge sublime-text</span>
+</pre></div>
+
+
+<h1 id="_8">工具软件</h1>
+<p>命令行词典</p>
+<ul>
+<li>sdcv: <code>emerge sdcv</code></li>
+<li>ici: <code>pip install ici</code></li>
+<li>ydcv</li>
+<li>iSearch</li>
+</ul>
+<h1 id="_9">窗口管理</h1>
+<p>x11-wm/awesome</p>
+<ol>
+<li>安装awesome：<code>emerge -avt x11-wm/awesome</code></li>
+<li>运行显示管理器和X时启动awesome：在 <code>~/.xinitrc</code>添加 <code>exec ck-launch-session dbus-launch --sh-syntax --exit-with-session awesome</code></li>
+<li>配置文件：<code>~/.config/awesome/rc.lua</code>; 默认配置文件位于 <code>/etc/xdg/awesome/rc.lua</code>.</li>
+<li>更改默认终端：修改 <code>~/.config/awesome/rc.lua</code> 添加 <code>terminal="konsole"</code>.</li>
+<li>
+<p>检查配置文件：<code>awesome -k</code></p>
+</li>
+<li>
+<p>标签 Tags</p>
+</li>
+<li>菜单 Menu</li>
+<li>时间 Date</li>
+<li>音量控制 Volume control</li>
+<li>多媒体键</li>
+<li>快捷键</li>
+</ol>
+<h1 id="_10">输入法</h1>
+<h2 id="fcitx">无法调用出fcitx中文输入法</h2>
+<p>使用 <code>fcitx-diagnose</code> 进行诊断，将报错标红的依赖包给加入use flags。</p>
+<h1 id="_11">用户界面</h1>
+<h2 id="arc-theme">arc-theme</h2>
+<p>实现主题的窗口部分无法识别出来。后来发现是少了use 标签，加上我所使用的桌面应用xfce之后成功加载了窗口主题。</p>
+<h2 id="papirus-icon-theme"><a href="https://github.com/PapirusDevelopmentTeam/papirus-icon-theme">papirus-icon-theme</a></h2>
+<div class="hlcode"><pre><span class="n">wget</span> <span class="o">-</span><span class="n">qO</span><span class="o">-</span> <span class="n">https</span><span class="o">:</span><span class="c1">//raw.githubusercontent.com/PapirusDevelopmentTeam/papirus-icon-theme/master/install-papirus-home-gtk.sh | sh</span>
+</pre></div>
+
+
+<h1 id="_12">系统配置</h1>
+<p>桌面：X11, XFCE, awesome
+字体：wqy-microhei, source-pro, source-han-sans, droid, noto-cjk, arphicfonts, opendesktop-fonts
+其他：xmodmap, layman, overlay, eix</p>
+<h1 id="_13">安装常用软件</h1>
+<p>开发与数据分析：nodejs, anaconda, R, RStudio, zsh, oh-my-zsh
+输入法：fcitx
+版本控制：Git
+浏览器：Chrome
+编辑器：Emacs, Vim, Sublime Text 3
+网络：shadowsocks-libev, proxychains-ng, axel
+娱乐：youtube-dl, smplayer
+图像编辑处理：inkscape, gimp
+办公：okular, libreoffice, calibre, zotero, evince</p>
+  
+  <div class="relation">
+    Related:
+    <ul>
+  
+    <li><a href="/wiki/Unix/learn_linux.html">Learn Linux</a></li>
+  
+    </ul>
+  </div>
+  
+</div>
+    </div>
+    <div id="footer">
+      <div class="footer-left">
+        <p>
+        Copyright © 2017 Lixiang.
+        Powered by <a href="http://simiki.org/" target="_blank">Simiki</a>.
+        Theme by <a href="https://git.coding.net/tankywoo/yasimple_x2.git" target="_blank">YASimple_X2</a>.
+        </p>
+      </div> <!-- end footer-left -->
+      <div class="footer-right">
+        <p>Site Generated 2017-07-06 18:24:12</p>
+      </div> <!-- end footer-right -->
+    </div>
+
+    
+    
+  </body>
+</html>
