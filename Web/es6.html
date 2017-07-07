@@ -45,14 +45,14 @@
 <h1 id="_1">块级作用域变量</h1>
 <p><strong>let/const</strong> vs. <strong>var</strong></p>
 <p>var 进行变量声明时会泄露到其它代码块，如 for 循环或者是 if 块。</p>
-<p>var 提升：
-- var 是在函数作用域中的：即使在声明前，它在整个函数内均可用；
-- 声明被提升了：变量在声明前就可以使用了；
+<p>var 提升：<br />
+- var 是在函数作用域中的：即使在声明前，它在整个函数内均可用；<br />
+- 声明被提升了：变量在声明前就可以使用了；<br />
 - 初始化没有被提升：如果使用 var，一定要在顶部声明变量。</p>
-<p>let 提升与 temporal dead zone：
-- 在 ES6 中，let 会将变量提升到块顶部，而非如 ES5 提升至函数顶部；
-- 在变量声明前引用变量会造成 ReferenceError；
-- let 是块级作用域的，不可以在声明前使用；
+<p>let 提升与 temporal dead zone：<br />
+- 在 ES6 中，let 会将变量提升到块顶部，而非如 ES5 提升至函数顶部；<br />
+- 在变量声明前引用变量会造成 ReferenceError；<br />
+- let 是块级作用域的，不可以在声明前使用；<br />
 - temporal dead zone 是块开始到变量被声明的这段区域。</p>
 <p>声明常量可以使用 const。</p>
 <h1 id="iife">立即执行函数表达式（IIFE）</h1>
@@ -81,13 +81,13 @@
 <p>promise 中可以用 then 在某个函数完成后执行新的代码，而不必再嵌套函数。</p>
 <h1 id="_6">箭头函数</h1>
 <p>在ES5 中，函数内需要用临时变量指向 this 或者使用 bind 绑定。ES6 中可以使用箭头函数解决 this 指向问题。箭头函数会捕捉其所在上下文的 this 值，作为自己的 this 值。</p>
-<p>箭头函数的引入有两个方面的影响：
-- 更简短的函数书写；
+<p>箭头函数的引入有两个方面的影响：<br />
+- 更简短的函数书写；<br />
 - 对 this 的词法解析。</p>
 <h1 id="forof">使用 for...of 迭代</h1>
 <p>for --&gt; forEach --&gt; for...of</p>
 <h1 id="_7">参数</h1>
-<p>默认参数：ES6 中可以指定 default parameters 的值。
+<p>默认参数：ES6 中可以指定 default parameters 的值。<br />
 剩余参数：ES6 中可以用展开操作符 ... 实现剩余参数</p>
 <hr />
 <p>参考资料：</p>
@@ -118,7 +118,7 @@
         </p>
       </div> <!-- end footer-left -->
       <div class="footer-right">
-        <p>Site Generated 2017-07-06 18:24:12</p>
+        <p>Site Generated 2017-07-07 15:04:50</p>
       </div> <!-- end footer-right -->
     </div>
 

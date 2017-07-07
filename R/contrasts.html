@@ -31,18 +31,18 @@
 <div id="content">
   <h1 id="contrasts-contrasts">什么是正交的 contrasts？如何建立正交 contrasts？</h1>
 <p>查看当前的 contrasts：<code>options("contrasts")</code></p>
-<p>两种应用 contrasts 的方式：
-- 添加 contrasts 到 data.frame 中，那么只要用到 data.frame 来构建模型，contrasts 将每次都将被使用。
+<p>两种应用 contrasts 的方式：<br />
+- 添加 contrasts 到 data.frame 中，那么只要用到 data.frame 来构建模型，contrasts 将每次都将被使用。<br />
 - 添加 contrasts 到 model 中，那么在检验模型时就会使用到它的 contrasts，只在检验对应模型是使用一次。</p>
 <p>R 中默认的 contrasts 为非等级因子，使用 treatment contrasts (dummy coding)；等级因子使用 polynomial trend contrasts，考察回归系数时有效。</p>
 <p>传统的 dummy coding 适用于回归系数，但是并不适用于方差分解，因为 dummy coding 非正交（non-orthogonal）。而且，<code>aov</code> 使用 <code>Type I</code> 平方和。其他包函数如 <code>car::Anova</code> <code>ez::ezANOVA</code> <code>afex::aov_ez</code> 等支持 <code>Type III</code> 平方和。</p>
 <p>在进行方差分析时，需要改为 effects codding 或者 orthogonal contrast coding。可以使用 <code>contr.sum</code> 函数，或者直接通过 <code>afex::set_sum_contrasts()</code>。</p>
 <p>使用 <code>car::Anova</code> 并不会显示出每个独立的比较，而仅仅显示出每个因子的总效应。可以把模型对象传入函数 <code>summary(modobj)</code>，这样就能显示出每个独立的比较的结果。如果使用 <code>aov</code> 建立模型，而不是 <code>lm</code>，传入 <code>split</code> 参数到 <code>summary</code> 才能看到比较的结果。<code>summary(..., split = list(var = list(...), ...))</code>。其中，split 参数中也可以不包含所有变量的所有水平。</p>
 <p>在构建自定义的比较时，需要谨慎，因为 <code>contrasts</code> 函数有一些小技巧，特别时当应用 contrast 权重时，需要对 contasts 矩阵进行求逆运算。</p>
-<p>以下为构建自定义比较的步骤：
-1. Specfiy the weights for your contrasts (and be sure to check the order of the levels of the factor, so your weights will line up properly). 首先指定 contrasts 的权重。
-2. Create a temporary matrix with each contrast as one row. The top row (for the constant) should be 1/j for j groups. 构建临时的矩阵，第一列每个元素为 1/j，如果 j 为水平数。使用 <code>rbind</code> 构建临时矩阵。
-3. Get the inverse of that temporary matrix. 使用 <code>solve</code> 函数对临时矩阵求逆。
+<p>以下为构建自定义比较的步骤：<br />
+1. Specfiy the weights for your contrasts (and be sure to check the order of the levels of the factor, so your weights will line up properly). 首先指定 contrasts 的权重。<br />
+2. Create a temporary matrix with each contrast as one row. The top row (for the constant) should be 1/j for j groups. 构建临时的矩阵，第一列每个元素为 1/j，如果 j 为水平数。使用 <code>rbind</code> 构建临时矩阵。<br />
+3. Get the inverse of that temporary matrix. 使用 <code>solve</code> 函数对临时矩阵求逆。<br />
 4. The first column of the inverse will be all 1’s. Drop that first column. The remaining columns are your contrast matrix. 求逆后的矩阵第一列每一个元素都为1，删除第一列，剩余的列即为最终的 contrast 矩阵。然后就可以在建立模型时传入 contrasts 参数 <code>contrasts = list(...)</code>。</p>
 <p>如果指定的 contrasts 为 orthogonal，每个比较的回归系数应该等于比较的组的均值的差值。</p>
 <p>不进行矩阵求逆会出现什么结果呢？如果 contrasts 为正交的，那么对回归系数检验的 t 值和 p 值时没有问题的，但是 contrast estimate 以及对应的标准误可能不等于比较的组的均值的差值。如果 contrasts 不是正交的，那么所得到的结果是无效的。所以，最好是对所有 contasts 权重矩阵进行求逆。</p>
@@ -50,8 +50,8 @@
 <p>需要注意，如果 <code>lm()</code> 模型中 contrasts 少于 j-1 次，没有反映在 contrasts 中的组差异将被纳入到误差项中。</p>
 <blockquote>
 <p><strong>Orthogonal contrasts</strong> are a set of contrasts in which, for any distinct pair, <strong>the sum of the cross-products of the coefficients is zero</strong> (assume sample sizes are equal). Although there are potentially infinite sets of orthogonal contrasts, within any given set there will always be a maximum of exactly k – 1 possible orthogonal contrasts (where k is the number of group means available).</p>
-<p>There are only k-1 orthogonal comparisons, where k is the number of factor levels.
-Comparisons/contrasts orthogonal to each other are statistically independent.
+<p>There are only k-1 orthogonal comparisons, where k is the number of factor levels.<br />
+Comparisons/contrasts orthogonal to each other are statistically independent.<br />
 Which of the possible comparisons should we conduct? Well, this very much depends on our hypothesis we have in mind.</p>
 <p>We need to specify a contrast matrix, showing which comparisons we want to make. A contrast matrix consists of so-called contrast coefficients that (in the end) all have to sum to zero. This means, those things we want to compare have to get the opposite sign (e.g. +1 and –1), while those things we don ́t want to compare will receive a value of zero.</p>
 <p>Orthogonal contrasts are planned, a priori tests that partition the experimental variance cleanly. They are a powerful tool for analyzing data, but they are not appropriate for all experiments. Less restrictive comparisons among treatment means can be performed using various means separation tests, or multiple comparison tests.</p>
@@ -92,7 +92,7 @@ Which of the possible comparisons should we conduct? Well, this very much depend
         </p>
       </div> <!-- end footer-left -->
       <div class="footer-right">
-        <p>Site Generated 2017-07-06 18:24:12</p>
+        <p>Site Generated 2017-07-07 15:04:50</p>
       </div> <!-- end footer-right -->
     </div>
 

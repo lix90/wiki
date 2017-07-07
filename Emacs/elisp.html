@@ -110,14 +110,14 @@
 <p>elisp 测试函数一般都是用 p 结尾，p 是 predicate 的第一个字母。</p>
 <h3 id="_12">数的比较</h3>
 <p>&lt; &gt; &gt;= &lt;= = /=</p>
-<p><code>/=</code> 用来作为不等于的测试
+<p><code>/=</code> 用来作为不等于的测试<br />
 <code>eql</code> 不仅用于测试数字的值是否相等，还测试数字类型是否一致</p>
 <h3 id="_13">数的转换</h3>
-<p>整数向浮点数转换：float
-浮点数转换成整数：
-- truncate 转换成靠近 0 的整数；
-- floor 转换成最接近的不比本身的整数；
-- ceiling 转换成最接近的不比本身小的整数；
+<p>整数向浮点数转换：float<br />
+浮点数转换成整数：<br />
+- truncate 转换成靠近 0 的整数；<br />
+- floor 转换成最接近的不比本身的整数；<br />
+- ceiling 转换成最接近的不比本身小的整数；<br />
 - round 四舍五入后的整数</p>
 <h3 id="_14">数的运算</h3>
 <ul>
@@ -133,12 +133,12 @@
 </ul>
 <p>如果参数都是整数，作除法时数相等返回1，不相等返回0。如果参数中有浮点数，整数会自动转换成浮点数进行运算。</p>
 <p>emacs 中没有 ++ 和 --，可以用 1+ 和 1- 使用 setq 赋值来替代 ++ 和 --。Common lisp 中的两个宏 incf 和 decf 可以实现 ++ 和 --。但是在 elisp 中使用这两个宏，需要在文件头写上：<code>(eval-when-compile (require 'cl))</code>。</p>
-<p><code>abs</code> 取数的绝对值。
+<p><code>abs</code> 取数的绝对值。<br />
 两个取整的函数：<code>%</code> <code>mod</code>；前者第一个参数必须是整数；后者第一个参数既可以是整数也可以是浮点数。另外，即使对相同的参数，两个函数也不一定具有相同的返回值。</p>
-<p>三角运算函数：sin, cos, tan, asin, acos, atan
-开方函数：sqrt
-exp 为 e 以底的指数运算，expt 可以指定底数的指数运算。
-log 默认底数为 e，但也可以指定底数。<code>(log x 10)</code> -&gt; log10。logb 以 2 为底的对数运算。
+<p>三角运算函数：sin, cos, tan, asin, acos, atan<br />
+开方函数：sqrt<br />
+exp 为 e 以底的指数运算，expt 可以指定底数的指数运算。<br />
+log 默认底数为 e，但也可以指定底数。<code>(log x 10)</code> -&gt; log10。logb 以 2 为底的对数运算。<br />
 random 产生随机数。</p>
   
 </div>
@@ -152,7 +152,7 @@ random 产生随机数。</p>
         </p>
       </div> <!-- end footer-left -->
       <div class="footer-right">
-        <p>Site Generated 2017-07-06 18:24:12</p>
+        <p>Site Generated 2017-07-07 15:04:50</p>
       </div> <!-- end footer-right -->
     </div>
 

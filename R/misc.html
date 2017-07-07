@@ -55,23 +55,23 @@
 <p>一般来说，用 R 统计之后导出的信息过于详细，直接复制并不能满足发表的格式要求。但是结果报告时只需要特定的指标，所以需要精简信息。两个包可以实现该需求，<code>schoRsch</code> 和 <code>apa</code>。</p>
 <blockquote>
 <p>apa generalizes this idea by providing formatters for different output formats (text, Markdown, RMarkdown, HTML, LaTeX, docx and R’s plotmath syntax).</p>
-<p>Currently supported tests are:
-- t-test (<code>t.test</code> and <code>apa::t_test</code>)
-- ANOVA (<code>ez::ezANOVA</code>, <code>afex::aov_car</code>, <code>afex::aov_ez</code>, and <code>afex::aov_4</code>)
-- chi-squared test (<code>chisq.test</code>)
+<p>Currently supported tests are:<br />
+- t-test (<code>t.test</code> and <code>apa::t_test</code>)<br />
+- ANOVA (<code>ez::ezANOVA</code>, <code>afex::aov_car</code>, <code>afex::aov_ez</code>, and <code>afex::aov_4</code>)<br />
+- chi-squared test (<code>chisq.test</code>)<br />
 - test of a correlation (<code>cor.test</code>)</p>
 </blockquote>
 <p>apa 包可以支持多种常见的心理学使用的统计检验方法，对应函数为：<code>anova_apa</code> <code>chisq_apa</code> <code>cor_apa</code> <code>t_apa</code>。apa 比 schoRsch 强大的地方是可以导出为多种格式，例如 Rmarkdown，html，latex，docx，以及在 R 绘图时的数学表达式。这样就可以直接复制结果到论文中了。</p>
 <p>schoRsch 包中包含这几个导出结果的函数：<code>anova_out</code> <code>cor_out</code> <code>chi_out</code> <code>t_out</code>。</p>
-<p><code>apa::anova_apa</code>
-- x: 支持 <code>ez::ezANOVA</code> <code>afex::afex_ez</code> <code>afex::afex_car</code> <code>afex::afex_4</code> 的结果作为输入对象。
-- effect: 字符串，指定效应名称；如果值为 'NULL'，所有效应均报告。
-- sph_corr: 字符串，指定球形检验方法，包括 "greenhouse-geisser"(默认) "huynh-feldt" 或 "none"；或者使用简称 "gg" "hf"。
-- es: 字符串，指定效应量类型，包括 "petasq"(partial eta squared) 或 "getasq"(generalized eta squared)；或者使用简称 "pes" 和 "ges"。
+<p><code>apa::anova_apa</code><br />
+- x: 支持 <code>ez::ezANOVA</code> <code>afex::afex_ez</code> <code>afex::afex_car</code> <code>afex::afex_4</code> 的结果作为输入对象。<br />
+- effect: 字符串，指定效应名称；如果值为 'NULL'，所有效应均报告。<br />
+- sph_corr: 字符串，指定球形检验方法，包括 "greenhouse-geisser"(默认) "huynh-feldt" 或 "none"；或者使用简称 "gg" "hf"。<br />
+- es: 字符串，指定效应量类型，包括 "petasq"(partial eta squared) 或 "getasq"(generalized eta squared)；或者使用简称 "pes" 和 "ges"。<br />
 - format: 字符串，指定导出格式，包含 "text", "markdown", "rmarkdown", "html", "latex", "docx", "plotmath"。</p>
-<p><code>apa::t_apa</code>
-- x: 来自 <code>apa::t_test</code> 或 <code>t.test</code> 的结果。
-- es: 字符串，指定效应量类型，包括 "cohens_d"(默认), "hedges_g", 或 "glass_delta"（如何 x 为独立样本 t 检验的结果）。如果 x 为配对样本或者单样本 t 检验结果，报告 cohen's d 值。
+<p><code>apa::t_apa</code><br />
+- x: 来自 <code>apa::t_test</code> 或 <code>t.test</code> 的结果。<br />
+- es: 字符串，指定效应量类型，包括 "cohens_d"(默认), "hedges_g", 或 "glass_delta"（如何 x 为独立样本 t 检验的结果）。如果 x 为配对样本或者单样本 t 检验结果，报告 cohen's d 值。<br />
 - format: 字符串，导出格式。</p>
 <hr />
 <p>矫正 p.value：<code>p.adjust(p, method = p.adjust.methods)</code></p>
@@ -104,7 +104,7 @@
         </p>
       </div> <!-- end footer-left -->
       <div class="footer-right">
-        <p>Site Generated 2017-07-06 18:24:12</p>
+        <p>Site Generated 2017-07-07 15:04:50</p>
       </div> <!-- end footer-right -->
     </div>
 

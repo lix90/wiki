@@ -35,20 +35,20 @@
 </ul>
 </div>
 <h1 id="base">base</h1>
-<p><strong>Sys.</strong>
-- <code>Sys.getenv()</code> 获取环境变量内容
-- <code>Sys.setenv()</code> 设置环境变量
-- <code>Sys.unsetenv()</code> 移除环境变量
+<p><strong>Sys.</strong><br />
+- <code>Sys.getenv()</code> 获取环境变量内容<br />
+- <code>Sys.setenv()</code> 设置环境变量<br />
+- <code>Sys.unsetenv()</code> 移除环境变量<br />
 - <code>Sys.time()</code> <code>Sys.Date()</code> 获取当前日期和时间</p>
 <h1 id="startup">Startup</h1>
-<p>步骤
-1. <strong>设置环境变量</strong>：通过 site 和 user 文件
-2. site file 由环境变量 <code>R_ENVIRON</code> 指定；如果没有指定，那么使用系统默认 site file，<code>R_HOME/etc/Renviron.site</code>。
-3. user file 由环境变量 <code>R_ENVIRON_USER</code> 指定；如果没有指定，那么搜索当前工作路径或者用户的主路径（HOME directory）中的 <code>.Renviron</code> 文件。
-  此时 base package 被加载
-2. 搜索 profile file，由<code>R_PROFILE</code>环境变量指定，若不存在，则使用 <code>R_HOME/etc/Rprofile.site</code>。
-3. 搜索 user profile，有 <code>R_PROFILE_USER</code> 环境变量指定，如果不存在，调用 <code>.Rprofile</code>，source 到 workspace 中。
-4. 如果存在 <code>.RData</code>，则加载
+<p>步骤<br />
+1. <strong>设置环境变量</strong>：通过 site 和 user 文件<br />
+2. site file 由环境变量 <code>R_ENVIRON</code> 指定；如果没有指定，那么使用系统默认 site file，<code>R_HOME/etc/Renviron.site</code>。<br />
+3. user file 由环境变量 <code>R_ENVIRON_USER</code> 指定；如果没有指定，那么搜索当前工作路径或者用户的主路径（HOME directory）中的 <code>.Renviron</code> 文件。<br />
+  此时 base package 被加载<br />
+2. 搜索 profile file，由<code>R_PROFILE</code>环境变量指定，若不存在，则使用 <code>R_HOME/etc/Rprofile.site</code>。<br />
+3. 搜索 user profile，有 <code>R_PROFILE_USER</code> 环境变量指定，如果不存在，调用 <code>.Rprofile</code>，source 到 workspace 中。<br />
+4. 如果存在 <code>.RData</code>，则加载<br />
 5. 如果存在 <code>.First</code> 函数，则执行，然后，<code>base::.First.sys()</code> 执行。<code>.First.sys()</code> 调用 <code>require</code> 加载默认的包。默认的 R 包由 <code>options("defaultPackages")</code> 指定。如果默认包中包含 methods package，那么通过函数 <code>.OptRequireMethods()</code> 先加载 methods 包。<code>.First()</code> 可以在 <code>.Rprofile</code> 和 <code>Profile.site</code> 中定义，也可以存储在 <code>.RData</code> 中。</p>
 <p>在 R 启动时，需要两种文件，设置环境变量的文件和包含 R 代码的 profile 文件。</p>
   
@@ -88,7 +88,7 @@
         </p>
       </div> <!-- end footer-left -->
       <div class="footer-right">
-        <p>Site Generated 2017-07-06 18:24:12</p>
+        <p>Site Generated 2017-07-07 15:04:50</p>
       </div> <!-- end footer-right -->
     </div>
 

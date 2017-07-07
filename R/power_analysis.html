@@ -60,9 +60,9 @@
 </div>
 <h1 id="_1">统计检验力分析</h1>
 <h2 id="_2">统计检验力</h2>
-<p>power 统计检验力：如果真实差异存在，统计检验能够检测到真实差异的能力。
-$\beta$ 第二类错误概率：当虚无假设（null hypothesis）为假，没有能够拒绝虚无假设的概率。
-$$power = 1 - \beta$$
+<p>power 统计检验力：如果真实差异存在，统计检验能够检测到真实差异的能力。<br />
+$\beta$ 第二类错误概率：当虚无假设（null hypothesis）为假，没有能够拒绝虚无假设的概率。<br />
+$$power = 1 - \beta$$<br />
 所以统计检验力也就是在虚无假设为假时成功拒绝掉虚无假设的概率。</p>
 <h2 id="_3">统计检验力的几个问题</h2>
 <ul>
@@ -74,7 +74,7 @@ $$power = 1 - \beta$$
 <h2 id="_4">效应量</h2>
 <p>对于中等程度的效应量，组间标准差为 1/4 个组内标准差。</p>
 <h2 id="r">使用 R 进行统计检验力分析</h2>
-<p><code>power.t.test</code>
+<p><code>power.t.test</code><br />
 <code>power.anova.test</code></p>
 <h2 id="power">power 分析的挑战</h2>
 <ul>
@@ -99,8 +99,8 @@ $$power = 1 - \beta$$
 <li>需要控制第一类错误率，所以每次比较的结果就将更保守</li>
 </ul>
 <h2 id="_6">比较次数</h2>
-<p>两个问题：
-- 正交性 orthogonality
+<p>两个问题：<br />
+- 正交性 orthogonality<br />
 - 第一类错误的增加 inflation of Type-I error</p>
 <p>问题：可以进行多少次比较，而且不会带来冗余？</p>
 <h2 id="non-redundant-contrasts">非冗余比较 Non-redundant contrasts</h2>
@@ -153,9 +153,9 @@ $$power = 1 - \beta$$
 <h2 id="_11">事后成对比较</h2>
 <p>Tukey 方法（<code>TukeyHSD()</code>）允许进行一个实验中所有可能的成对比较，然后保持 $\alpha_EW = 0.05$。如果样本方差不相同，或者样本量不同，需要使用修改的 Tukey 方法。</p>
 <p>Scheffe 方法也比较保守。</p>
-<p>其它方法：
-- Dunnett
-- Fisher's LSD
+<p>其它方法：<br />
+- Dunnett<br />
+- Fisher's LSD<br />
 - Newman-Keuls</p>
 <h2 id="_12">如何应对多重比较问题？</h2>
 <ul>
@@ -176,7 +176,7 @@ $$power = 1 - \beta$$
         </p>
       </div> <!-- end footer-left -->
       <div class="footer-right">
-        <p>Site Generated 2017-07-06 18:24:12</p>
+        <p>Site Generated 2017-07-07 15:04:50</p>
       </div> <!-- end footer-right -->
     </div>
 

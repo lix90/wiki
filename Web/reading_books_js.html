@@ -31,17 +31,17 @@
 <div class="clearfix"></div>
 <div id="content">
   <h1 id="eloquent-js-2015">Eloquent JS (2015)</h1>
-<p>六种类型数值：numbers, strings, booleans, objects, functions, undefined values
-javascript 最高使用 64bits 存储单个数值，达到 2^64 个数字，18<em>10^18，实际上只有 9</em>10^15 个数字。
-三种特殊数字：Infinite, -Infinite, NaN
+<p>六种类型数值：numbers, strings, booleans, objects, functions, undefined values<br />
+javascript 最高使用 64bits 存储单个数值，达到 2^64 个数字，18<em>10^18，实际上只有 9</em>10^15 个数字。<br />
+三种特殊数字：Infinite, -Infinite, NaN<br />
 两种未定义值：null, undefined</p>
 <h1 id="nodejs">Node.JS 开发指南</h1>
-<p>实时Web应用开发
-Node.js让JavaScript运行在服务器端上，浏览器之外。
+<p>实时Web应用开发<br />
+Node.js让JavaScript运行在服务器端上，浏览器之外。<br />
 Node.js将“HTTP服务器”这一层抽离，直接面向浏览器用户。</p>
 <h2 id="io">异步式I/O与事件式编程</h2>
 <p>异步事件模式的有缺点有哪些？</p>
-<p>事件队列
+<p>事件队列<br />
 事件循环</p>
 <p>阻塞与阻塞式 I/O：</p>
 <blockquote>
@@ -90,10 +90,10 @@ Node.js将“HTTP服务器”这一层抽离，直接面向浏览器用户。</p
 <h3 id="_1">进程与线程</h3>
 <blockquote>
 <p>线程：thread，操作系统能够进行运算调度的最小单位。它被包含在进程之中，是进程中的实际运作单位。一条线程指的是进程中一个单一顺序的控制流，一个进程中可以并发多个线程，每条线程并行执行不同的任务。同一进程中的多条线程将共享该进程中的全部系统资源，如虚拟地址空间，文件描述符和信号处理等等。但同一进程中的多个线程有各自的调用栈（call stack），自己的寄存器环境（register context），自己的线程本地存储（thread-local storage）。</p>
-<p>操作系统的设计，因此可以归结为三点：
-（1）以多进程形式，允许多个任务同时运行；
-（2）以多线程形式，允许单个任务分成不同的部分运行；
-（3）提供协调机制，一方面防止进程之间和线程之间产生冲突，另一方面允许进程之间和线程之间共享资源。
+<p>操作系统的设计，因此可以归结为三点：<br />
+（1）以多进程形式，允许多个任务同时运行；<br />
+（2）以多线程形式，允许单个任务分成不同的部分运行；<br />
+（3）提供协调机制，一方面防止进程之间和线程之间产生冲突，另一方面允许进程之间和线程之间共享资源。<br />
 http://www.ruanyifeng.com/blog/2013/04/processes_and_threads.html</p>
 </blockquote>
 <h3 id="event-loop">Event Loop</h3>
@@ -115,9 +115,9 @@ http://www.ruanyifeng.com/blog/2013/04/processes_and_threads.html</p>
 <li>javascript -&gt; window</li>
 <li>node.js -&gt; global</li>
 </ul>
-<p>global 最根本的作用是作为全局变量的宿主。按照 ECMAScript 的定义，满足以下条件的变量为全局变量：
-- 在最外层定义的变量；
-- 全局对象的属性；
+<p>global 最根本的作用是作为全局变量的宿主。按照 ECMAScript 的定义，满足以下条件的变量为全局变量：<br />
+- 在最外层定义的变量；<br />
+- 全局对象的属性；<br />
 - 隐式定义的变量（为定义直接赋值的变量）。</p>
 <p>在 nodejs 不可能在最外层定义变量。</p>
 <h4 id="process">process</h4>
@@ -146,7 +146,7 @@ http://www.ruanyifeng.com/blog/2013/04/processes_and_threads.html</p>
         </p>
       </div> <!-- end footer-left -->
       <div class="footer-right">
-        <p>Site Generated 2017-07-06 18:24:12</p>
+        <p>Site Generated 2017-07-07 15:04:50</p>
       </div> <!-- end footer-right -->
     </div>
 

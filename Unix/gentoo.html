@@ -84,10 +84,10 @@
 <li>
 <p>配置内核</p>
 <blockquote>
-<p>File systems  —&gt;
-  DOS/FAT/NT Filesystems  —&gt;
-    &lt;<em>&gt; NTFS file system support
-    [ ]   NTFS debugging support
+<p>File systems  —&gt;<br />
+  DOS/FAT/NT Filesystems  —&gt;<br />
+    &lt;<em>&gt; NTFS file system support<br />
+    [ ]   NTFS debugging support<br />
     [</em>]   NTFS write support</p>
 <p>&lt;*&gt; Filesystem in Userspace support</p>
 </blockquote>
@@ -112,7 +112,7 @@
 <blockquote>
 <p>使用文字介面的時候，會看到tty1、tty2之類的名稱，這是什麼東西呢？TTY是「Teletypes」這個字的縮寫，原意是打字機，引申為打字輸入的介面，也就是終端機(Terminal)的文字輸入介面。tty之後接的號碼，可以想像成是第幾台終端機，例如tty1就是第一台終端機。Linux預設有七台終端機，分別是tty1、tty2、tty3、tty4、tty5、tty6、tty7，tty7一般作為X-Window圖形介面使用。切換不同tty的方式很簡單，只要使用鍵盤組合鍵即可達成，按法為：「ctrl + alt + F1~F7」，「F」的號碼就代表tty的號碼。如按下「ctrl + alt + F5」就可以切換到tty5。<a href="https://magiclen.org/linux-text/">link</a></p>
 </blockquote>
-<p><code>Ctrl+Alt+F1-F6</code>
+<p><code>Ctrl+Alt+F1-F6</code><br />
 <code>Ctrl+Alt+F7</code> 返回图形界面</p>
 <h1 id="_4">触控板配置</h1>
 <p>个人使用xfce, 自带设置界面, 基本满足要求.</p>
@@ -137,13 +137,13 @@
 
 
 <p>nmcli</p>
-<p>列出wifi列表：<code>nmcli dev wifi</code>
-连接wifi：<code>nmcli dev wifi connect &lt;name&gt; password &lt;password&gt;</code>
+<p>列出wifi列表：<code>nmcli dev wifi</code><br />
+连接wifi：<code>nmcli dev wifi connect &lt;name&gt; password &lt;password&gt;</code><br />
 断开wifi：<code>nmcli dev disconnect wifi</code></p>
 <h2 id="_6">获取网络设备信息</h2>
-<p>获取基本信息（bus-id, manufacturer, model）：<code>lspci | grep -i net</code>
-硬件信息：<code>lshw -class network</code>
-硬件与配置信息：<code>inxi -N -v 7</code>
+<p>获取基本信息（bus-id, manufacturer, model）：<code>lspci | grep -i net</code><br />
+硬件信息：<code>lshw -class network</code><br />
+硬件与配置信息：<code>inxi -N -v 7</code><br />
 网络配置：<code>ip ad show</code></p>
 <h2 id="wifi">配置无线wifi</h2>
 <p>检测wifi驱动：lspci或者lsusb</p>
@@ -154,7 +154,7 @@
 </pre></div>
 
 
-<p><a href="http://damienfirmenich.com/2015/04/12/t450s-rtl8191ee.html">Fixing the Realtek rtl8192ee driver on Linux</a>
+<p><a href="http://damienfirmenich.com/2015/04/12/t450s-rtl8191ee.html">Fixing the Realtek rtl8192ee driver on Linux</a><br />
 <a href="https://wiki.gentoo.org/wiki/NetworkManager">Network Manager</a></p>
 <div class="hlcode"><pre><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="o">:</span><span class="c1">//github.com/lwfinger/rtlwifi_new</span>
 
@@ -191,16 +191,16 @@
 <p>解决：新建报错中的路径 <code>sudo mkdir &lt;directory&gt; -p</code>, 然后继续执行 <code>sudo make install</code></p>
 <h1 id="add-startup-service">Add startup service</h1>
 <h1 id="_7">配置声卡</h1>
-<p>配置内核
-将alsa加入全局USE: <code>euse -E alsa</code>
-安装 <code>emerge -avt alsa-utils</code>
-保证用户在audio用户组中
-开启alsa服务
-开机启动
-调节音量工具alsamixer
+<p>配置内核<br />
+将alsa加入全局USE: <code>euse -E alsa</code><br />
+安装 <code>emerge -avt alsa-utils</code><br />
+保证用户在audio用户组中<br />
+开启alsa服务<br />
+开机启动<br />
+调节音量工具alsamixer<br />
 测试声音 <code>speaker-test -t wav -c 2</code></p>
 <h1 id="launcher">launcher</h1>
-<p>albert <code>emerge -avt albert</code>
+<p>albert <code>emerge -avt albert</code><br />
 synapse <code>emerge -avt synapse</code></p>
 <h1 id="u">格式化U盘</h1>
 <p>format USB disk into fat32</p>
@@ -268,18 +268,18 @@ synapse <code>emerge -avt synapse</code></p>
 
 
 <h1 id="_12">系统配置</h1>
-<p>桌面：X11, XFCE, awesome
-字体：wqy-microhei, source-pro, source-han-sans, droid, noto-cjk, arphicfonts, opendesktop-fonts
+<p>桌面：X11, XFCE, awesome<br />
+字体：wqy-microhei, source-pro, source-han-sans, droid, noto-cjk, arphicfonts, opendesktop-fonts<br />
 其他：xmodmap, layman, overlay, eix</p>
 <h1 id="_13">安装常用软件</h1>
-<p>开发与数据分析：nodejs, anaconda, R, RStudio, zsh, oh-my-zsh
-输入法：fcitx
-版本控制：Git
-浏览器：Chrome
-编辑器：Emacs, Vim, Sublime Text 3
-网络：shadowsocks-libev, proxychains-ng, axel
-娱乐：youtube-dl, smplayer
-图像编辑处理：inkscape, gimp
+<p>开发与数据分析：nodejs, anaconda, R, RStudio, zsh, oh-my-zsh<br />
+输入法：fcitx<br />
+版本控制：Git<br />
+浏览器：Chrome<br />
+编辑器：Emacs, Vim, Sublime Text 3<br />
+网络：shadowsocks-libev, proxychains-ng, axel<br />
+娱乐：youtube-dl, smplayer<br />
+图像编辑处理：inkscape, gimp<br />
 办公：okular, libreoffice, calibre, zotero, evince</p>
   
   <div class="relation">
@@ -302,7 +302,7 @@ synapse <code>emerge -avt synapse</code></p>
         </p>
       </div> <!-- end footer-left -->
       <div class="footer-right">
-        <p>Site Generated 2017-07-06 18:24:12</p>
+        <p>Site Generated 2017-07-07 15:04:50</p>
       </div> <!-- end footer-right -->
     </div>
 
