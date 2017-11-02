@@ -100,6 +100,7 @@ sudo mount -t ntfs-3g /dev/sd* ~/hd
 # 触控板配置
 
 个人使用xfce, 自带设置界面, 基本满足要求.
+
 # 配置texlive2016
 
 set repository
@@ -250,6 +251,7 @@ cd sublime-text-imfix && ./sublime-imfix
 * ici: `pip install ici`
 * ydcv
 * iSearch
+
 # 窗口管理
 
 x11-wm/awesome

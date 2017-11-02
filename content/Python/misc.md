@@ -25,12 +25,20 @@ conda create --name/-n <environment name> anaconda
 
 # Jupyter
 
-Jupyter matlab kernel
+## Jupyter matlab kernel
 
 ``` shell
 pip install pymatbridge matlab_kernel
 python -m matlab_kernel install
 printf "export MATLAB_EXECUTABLE=/Applications/MATLAB_2014b.app/bin/matlab" >> ~/.bash_profile
+```
+
+## `Failed building wheel for scandir` @CentOS7
+
+安装python-devel 后解决
+
+```shell
+sudo yum install python-devel
 ```
 
 
